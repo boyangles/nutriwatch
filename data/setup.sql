@@ -12,9 +12,10 @@ CREATE Table Restaurant (
 );
 
 CREATE Table RestaurantMenus (
-    M_ID INTEGER NOT NULL PRIMARY KEY,
+    M_ID INTEGER NOT NULL,
     name VARCHAR(100) NOT NULL,
-    R_ID INTEGER NOT NULL REFERENCES Restaurant(R_ID)
+    R_ID INTEGER NOT NULL REFERENCES Restaurant(R_ID),
+    PRIMARY KEY(M_ID, R_ID)
 );
 
 CREATE TABLE RestaurantCuisines (
