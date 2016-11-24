@@ -12,10 +12,9 @@ CREATE Table Restaurant (
 );
 
 CREATE Table RestaurantMenus (
-    M_ID INTEGER NOT NULL,
+    M_ID INTEGER NOT NULL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
-    R_ID INTEGER NOT NULL REFERENCES Restaurant(R_ID),
-    PRIMARY KEY(M_ID, R_ID)
+    R_ID INTEGER NOT NULL REFERENCES Restaurant(R_ID)
 );
 
 CREATE TABLE RestaurantCuisines (
@@ -66,10 +65,10 @@ INSERT INTO Ingredients VALUES(6, 'Peanuts');
 INSERT INTO Ingredients VALUES(7, 'Wheat');
 INSERT INTO Ingredients VALUES(8, 'Soybeans');
 
---INSERT INTO Dishes VALUES(1, 1, 'Grilled Cheese and...', 6.0, 4.0, 'American', 400);
+INSERT INTO Dishes VALUES(1, 1, 'Grilled Cheese and...', 6.0, 4.0, 'American', 400);
 
---INSERT INTO DishIngredients VALUES(1, 1);
---INSERT INTO DishIngredients VALUES(1, 8);
+INSERT INTO DishIngredients VALUES(1, 1);
+INSERT INTO DishIngredients VALUES(1, 8);
 
 INSERT INTO DietaryViolations VALUES(1, 'Lactose Intolerant');
 INSERT INTO DietaryViolations VALUES(1, 'Vegan');
