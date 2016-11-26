@@ -1,0 +1,452 @@
+1,Milk and Dairy
+1,Eggs
+1,Wheat
+1,Soybeans
+2,Milk and Dairy
+2,Eggs
+2,Soybeans
+3,Milk and Dairy
+3,Eggs
+3,Soybeans
+3,Meat
+4,Milk and Dairy
+4,Eggs
+4,Soybeans
+4,Meat
+5,Milk and Dairy
+5,Wheat
+6,Milk and Dairy
+6,Wheat
+6,Soybeans
+7,Eggs
+7,Wheat
+7,Soybeans
+7,Meat
+8,Eggs
+8,Wheat
+8,Soybeans
+9,Milk and Dairy
+9,Wheat
+9,Soybeans
+9,Meat
+10,Milk and Dairy
+10,Eggs
+10,Fish
+10,Wheat
+10,Soybeans
+11,Milk and Dairy
+11,Wheat
+12,Soybeans
+12,Meat
+13,Milk and Dairy
+13,Eggs
+13,Wheat
+13,Soybeans
+13,Meat
+14,Eggs
+14,Wheat
+14,Soybeans
+14,Meat
+15,Soybeans
+15,Meat
+16,Soybeans
+16,Meat
+17,Fish
+17,Shellfish
+17,Soybeans
+18,Milk and Dairy
+18,Eggs
+18,Wheat
+18,Soybeans
+19,Soybeans
+19,Meat
+20,Wheat
+20,Soybeans
+21,Wheat
+21,Soybeans
+22,Soybeans
+23,Milk and Dairy
+23,Eggs
+23,Wheat
+23,Soybeans
+23,Meat
+24,Milk and Dairy
+24,Wheat
+24,Soybeans
+25,Milk and Dairy
+25,Soybeans
+26,Wheat
+26,Soybeans
+26,Meat
+27,Milk and Dairy
+27,Eggs
+27,Wheat
+27,Soybeans
+27,Meat
+28,Wheat
+28,Soybeans
+28,Meat
+29,Eggs
+29,Fish
+29,Wheat
+29,Soybeans
+30,Wheat
+30,Soybeans
+30,Meat
+31,Milk and Dairy
+31,Eggs
+31,Fish
+31,Wheat
+31,Soybeans
+31,Meat
+32,Milk and Dairy
+32,Eggs
+32,Wheat
+32,Soybeans
+33,Milk and Dairy
+33,Eggs
+33,Wheat
+33,Soybeans
+34,Soybeans
+35,Milk and Dairy
+35,Eggs
+35,Fish
+35,Wheat
+35,Soybeans
+36,Eggs
+36,Soybeans
+37,Milk and Dairy
+37,Eggs
+37,Fish
+37,Wheat
+37,Soybeans
+37,Meat
+38,Soybeans
+39,Fish
+40,Milk and Dairy
+41,Milk and Dairy
+41,Other Gluten
+41,Soybeans
+41,Wheat
+42,Wheat
+42,Meat
+43,Meat
+44,Meat
+45,Soybeans
+45,Wheat
+45,Meat
+46,Milk and Dairy
+46,Meat
+47,Eggs
+47,Milk and Dairy
+47,MSG
+47,Wheat
+48,Eggs
+48,Milk and Dairy
+48,MSG
+48,Wheat
+49,Eggs
+49,Milk and Dairy
+49,MSG
+49,Wheat
+51,Milk and Dairy
+51,Soybeans
+51,Meat
+52,Milk and Dairy
+53,Soybeans
+53,Wheat
+53,Meat
+54,Eggs
+54,Milk and Dairy
+54,Other Gluten
+54,Soybeans
+54,Sulfites
+54,Wheat
+55,Milk and Dairy
+55,Meat
+56,Fish
+56,Milk and Dairy
+56,Shellfish
+56,Soybeans
+56,Wheat
+57,Milk and Dairy
+57,Soybeans
+57,Sulfites
+57,Wheat
+58,Soybeans
+58,Wheat
+59,Eggs
+59,Milk and Dairy
+59,Sulfites
+59,Wheat
+60,Milk and Dairy
+60,Soybeans
+60,Sulfites
+60,Wheat
+61,Fish
+62,Eggs
+62,Soybeans
+62,Sulfites
+62,Wheat
+62,Meat
+63,Eggs
+63,Fish
+63,Milk and Dairy
+63,Soybeans
+63,Sulfites
+63,Wheat
+64,Milk and Dairy
+64,Soybeans
+64,Wheat
+65,MSG
+65,Soybeans
+65,Tree Nuts
+65,Wheat
+65,Meat
+66,Fish
+66,Milk and Dairy
+66,Soybeans
+66,Sulfites
+67,MSG
+67,Soybeans
+67,Tree Nuts
+67,Wheat
+68,Milk and Dairy
+70,Eggs
+70,Milk and Dairy
+70,Tree Nuts
+71,Milk and Dairy
+71,Sulfites
+71,Wheat
+72,Milk and Dairy
+72,Wheat
+72,Meat
+73,Eggs
+73,Milk and Dairy
+73,Tree Nuts
+74,MSG
+74,Soybeans
+74,Sulfites
+74,Tree Nuts
+74,Wheat
+74,Meat
+75,Eggs
+75,Milk and Dairy
+75,MSG
+75,Sulfites
+75,Wheat
+75,Meat
+76,Fish
+76,Milk and Dairy
+76,Soybeans
+76,Sulfites
+76,Wheat
+76,Meat
+77,Eggs
+77,Sulfites
+77,Wheat
+77,Meat
+78,Eggs
+78,Milk and Dairy
+78,Other Gluten
+78,Wheat
+78,Meat
+79,Eggs
+79,Milk and Dairy
+79,MSG
+79,Other Gluten
+79,Wheat
+79,Meat
+80,Eggs
+80,Milk and Dairy
+80,Other Gluten
+80,Soybeans
+80,Wheat
+81,Eggs
+81,Fish
+81,Sulfites
+81,Wheat
+82,Milk and Dairy
+82,Other Gluten
+82,Wheat
+82,Meat
+83,Milk and Dairy
+83,Other Gluten
+83,Wheat
+83,Meat
+84,Eggs
+84,Milk and Dairy
+84,Other Gluten
+84,Soybeans
+84,Wheat
+84,Meat
+85,Other Gluten
+85,Wheat
+85,Meat
+86,Fish
+86,Other Gluten
+86,Sulfites
+86,Wheat
+87,Other Gluten
+87,Wheat
+88,Eggs
+88,Fish
+88,Other Gluten
+88,Sulfites
+88,Wheat
+89,Milk and Dairy
+89,Other Gluten
+89,Sulfites
+89,Wheat
+90,Other Gluten
+90,Wheat
+90,Meat
+91,Eggs
+91,Fish
+91,Milk and Dairy
+91,Other Gluten
+91,Soybeans
+91,Wheat
+92,Eggs
+92,Milk and Dairy
+92,Wheat
+92,Meat
+93,Milk and Dairy
+93,Other Gluten
+93,Wheat
+93,Meat
+94,Milk and Dairy
+94,MSG
+94,Other Gluten
+94,Wheat
+94,Meat
+95,Other Gluten
+95,Soybeans
+95,Wheat
+96,Eggs
+96,Milk and Dairy
+96,Other Gluten
+96,Wheat
+97,Milk and Dairy
+97,Wheat
+98,Wheat
+98,Meat
+99,Milk and Dairy
+99,Wheat
+99,Meat
+100,Milk and Dairy
+100,Wheat
+101,Fish
+101,Milk and Dairy
+101,Shellfish
+101,Wheat
+102,Milk and Dairy
+102,Soybeans
+102,Wheat
+102,Meat
+103,Milk and Dairy
+103,Soybeans
+103,Sulfites
+103,Wheat
+103,Meat
+104,Milk and Dairy
+104,Soybeans
+104,Wheat
+104,Meat
+105,Milk and Dairy
+105,Soybeans
+105,Wheat
+106,Milk and Dairy
+106,Soybeans
+106,Wheat
+107,Milk and Dairy
+107,Soybeans
+107,Wheat
+108,Milk and Dairy
+108,Soybeans
+108,Wheat
+108,Meat
+109,Milk and Dairy
+109,Soybeans
+109,Wheat
+110,Milk and Dairy
+110,Soybeans
+110,Sulfites
+110,Wheat
+110,Meat
+111,Milk and Dairy
+111,Soybeans
+111,Wheat
+112,Milk and Dairy
+112,Soybeans
+112,Wheat
+112,Meat
+113,Milk and Dairy
+113,Soybeans
+113,Wheat
+113,Meat
+114,Milk and Dairy
+114,Soybeans
+114,Sulfites
+114,Wheat
+114,Meat
+115,Eggs
+115,Milk and Dairy
+115,Sulfites
+119,Milk and Dairy
+119,Wheat
+120,Fish
+120,Milk and Dairy
+120,Soybeans
+120,Sulfites
+123,Milk and Dairy
+123,Peanuts
+123,Soybeans
+123,Wheat
+124,Eggs
+124,Milk and Dairy
+124,Soybeans
+124,Wheat
+125,Eggs
+125,Milk and Dairy
+125,Soybeans
+125,Wheat
+126,Milk and Dairy
+127,Eggs
+127,Milk and Dairy
+127,Soybeans
+127,Wheat
+128,Eggs
+128,Milk and Dairy
+128,Soybeans
+129,Eggs
+129,Milk and Dairy
+129,Soybeans
+129,Wheat
+130,Eggs
+130,Milk and Dairy
+130,Soybeans
+130,Wheat
+131,Milk and Dairy
+131,Soybeans
+131,Wheat
+132,Eggs
+132,Milk and Dairy
+132,Peanuts
+132,Soybeans
+132,Wheat
+133,Eggs
+133,Milk and Dairy
+133,Soybeans
+133,Wheat
+134,Milk and Dairy
+134,Peanuts
+134,Soybeans
+135,Milk and Dairy
+136,Milk and Dairy
+137,Milk and Dairy
+138,Eggs
+138,Milk and Dairy
+138,Soybeans
+138,Tree Nuts
+138,Wheat

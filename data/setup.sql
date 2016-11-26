@@ -12,9 +12,10 @@ CREATE Table Restaurant (
 );
 
 CREATE Table RestaurantMenus (
-    M_ID INTEGER NOT NULL PRIMARY KEY,
+    R_ID INTEGER NOT NULL REFERENCES Restaurant(R_ID),
+    M_ID INTEGER NOT NULL,
     name VARCHAR(100) NOT NULL,
-    R_ID INTEGER NOT NULL REFERENCES Restaurant(R_ID)
+    PRIMARY KEY (M_ID, R_ID)
 );
 
 CREATE TABLE RestaurantCuisines (
@@ -29,21 +30,23 @@ CREATE TABLE Ingredients (
 
 CREATE TABLE Dishes (
     D_ID INTEGER NOT NULL PRIMARY KEY,
-    M_ID INTEGER NOT NULL REFERENCES RestaurantMenus(M_ID),
+    R_ID INTEGER NOT NULL,
+    M_ID INTEGER NOT NULL,
     name VARCHAR(100) NOT NULL,
-    price double precision NOT NULL,
-    rating double precision,
+    price double precision NOT NULL CHECK (price > 0),
+    rating double precision CHECK (rating >= 0 AND rating <= 5),
     cuisine VARCHAR(50),
-    calories INTEGER NOT NULL
+    calories INTEGER,
+    FOREIGN KEY (M_ID, R_ID) REFERENCES RestaurantMenus(M_ID, R_ID)
 );
 
 CREATE TABLE DishIngredients (
     D_ID INTEGER NOT NULL REFERENCES Dishes(D_ID),
-    I_ID INTEGER NOT NULL REFERENCES Ingredients(I_ID)
+    ingredient VARCHAR(50)
 );
 
 CREATE TABLE DietaryViolations (
-    I_ID INTEGER NOT NULL REFERENCES Ingredients(I_ID),
+    ingredient VARCHAR(50) NOT NULL,
     diet VARCHAR(50) NOT NULL
 );
 
@@ -51,7 +54,7 @@ CREATE TABLE DietaryViolations (
 --Insertion of dummy data
 INSERT INTO Restaurant VALUES(1, 'Cafe Edens');
 
-INSERT INTO RestaurantMenus VALUES(1, '24-7 Menu', 1);
+INSERT INTO RestaurantMenus VALUES(1, 1, '24-7 Menu');
 
 INSERT INTO RestaurantCuisines VALUES(1, 'American');
 INSERT INTO RestaurantCuisines VALUES(1, 'Mexican');
@@ -65,10 +68,10 @@ INSERT INTO Ingredients VALUES(6, 'Peanuts');
 INSERT INTO Ingredients VALUES(7, 'Wheat');
 INSERT INTO Ingredients VALUES(8, 'Soybeans');
 
-INSERT INTO Dishes VALUES(1, 1, 'Grilled Cheese and...', 6.0, 4.0, 'American', 400);
+INSERT INTO Dishes VALUES(1, 1, 1, 'Grilled Cheese and...', 6.0, 4.0, 'American', 400);
 
-INSERT INTO DishIngredients VALUES(1, 1);
-INSERT INTO DishIngredients VALUES(1, 8);
+INSERT INTO DishIngredients VALUES(1, 'Dairy');
+INSERT INTO DishIngredients VALUES(1, 'Soybeans');
 
-INSERT INTO DietaryViolations VALUES(1, 'Lactose Intolerant');
-INSERT INTO DietaryViolations VALUES(1, 'Vegan');
+INSERT INTO DietaryViolations VALUES('Dairy', 'Lactose Intolerant');
+INSERT INTO DietaryViolations VALUES('Soybeans', 'Vegan');
