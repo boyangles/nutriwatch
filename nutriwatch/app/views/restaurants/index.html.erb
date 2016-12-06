@@ -1,0 +1,15 @@
+<h1>This is the corresponding database table for Restaurants</h1>
+
+<table>
+  <tr>
+    <th>R_ID</th>
+    <th>Name</th>
+  </tr>
+
+  <% @restaurants.each do |restaurant| %>
+    <tr>
+      <td><%= restaurant.r_id %></td>
+      <td><%= restaurant.name %></td>
+    </tr>
+  <% end %>
+</table>

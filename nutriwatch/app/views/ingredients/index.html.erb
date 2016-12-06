@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>I_ID</th>
+    <th>Name</th>
+  </tr>
+
+  <% @ingredients.each do |ingredient|  %>
+    <tr>
+      <td><%= ingredient.i_id %></td>
+      <td><%= ingredient.name %></td>
+    </tr>
+  <% end %>
+
+</table>
+
+<% if @next_page %>
+  <nav>
+    <ul class = "pager">
+      <li><%= link_to "More", ingredients_path(page: @next_page) %></li>
+    </ul>
+  </nav>
+<% end %>
