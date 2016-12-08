@@ -1,0 +1,32 @@
+<h1>This page is designated for Dishes</h1>
+
+<table style="width:50%">
+  <tr align="left">
+    <th>D_ID</th>
+    <th>Dish Name</th>
+    <th>Price</th>
+    <th>Rating</th>
+    <th>Cuisine</th>
+    <th>Calories</th>
+  </tr>
+
+  <% @dishes.each do |dish| %>
+    <tr align="left">
+      <td><%= dish.d_id %></td>
+      <td><%= dish.name %></td>
+      <td><%= dish.price %></td>
+      <td><%= dish.rating %></td>
+      <td><%= dish.cuisine %></td>
+      <td><%= dish.calories %></td>
+    </tr>
+  <% end %>
+</table>
+
+<% if @next_page %>
+  <nav>
+    <ul class="pager">
+      <li><%= link_to "More", dishes_path(page: @next_page) %></li>
+    </ul>
+  </nav>
+<% end %>
+
