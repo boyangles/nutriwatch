@@ -17,7 +17,12 @@ Rails.application.routes.draw do
   #   resources :products
 
   resources :restaurants #Restful routes for RestaurantsController
+  resources :restaurantmenus #Restful routes for RestaurantmenusController
+  resources :restaurantcuisines #REST routes for RestaurantcuisinesController
   resources :ingredients #Restful routes for IngredientsController
+  resources :dishes #Restful routes for DishesController
+  resources :dishingredients #Restful routes for DishingredientsController
+  resources :dietaryviolations #Restful routes for DietaryViolationsController 
 
   # Example resource route with options:
   #   resources :products do

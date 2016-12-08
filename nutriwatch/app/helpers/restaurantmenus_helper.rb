@@ -1,0 +1,2 @@
+module RestaurantmenusHelper
+end

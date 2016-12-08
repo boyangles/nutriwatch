@@ -1,0 +1,15 @@
+<h1>This page is dedicated to viewing Restaurant Cuisines</h1>
+
+<table>
+  <tr>
+    <th>R_ID</th>
+    <th>Cuisine Type</th>
+  </tr>
+
+  <% @restaurantcuisines.each do |restaurantcuisine| %>
+    <tr>
+      <td><%= restaurantcuisine.r_id %></td>
+      <td><%= restaurantcuisine.cuisine %></td>
+    </tr>
+  <% end %>
+</table>

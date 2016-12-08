@@ -1,5 +1,10 @@
 <h1>This is the corresponding database table for Restaurants</h1>
 
+<%= link_to new_restaurant_path, class: "btn btn-success btn-sm" do %>
+  <i class="glyphicon glyphicon-plus"></i>
+  <span>Add new Restaurant</span>
+<% end %>
+
 <table>
   <tr>
     <th>R_ID</th>
@@ -9,7 +14,11 @@
   <% @restaurants.each do |restaurant| %>
     <tr>
       <td><%= restaurant.r_id %></td>
-      <td><%= restaurant.name %></td>
+      <td>
+        <%= link_to restaurant_path(restaurant) do %>
+          <%= restaurant.name %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>

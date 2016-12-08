@@ -1,0 +1,17 @@
+<h1>Restaurant Menus are here:</h1>
+
+<table>
+  <tr>
+    <th>R_ID</th>
+    <th>M_ID</th>
+    <th>Name</th>
+  </tr>
+
+  <% @restaurantmenus.each do |restaurantmenu| %>
+    <tr>
+      <td><%= restaurantmenu.r_id %></td>
+      <td><%= restaurantmenu.m_id %></td>
+      <td><%= restaurantmenu.name %></td>
+    </tr>
+  <% end %>
+</table>
