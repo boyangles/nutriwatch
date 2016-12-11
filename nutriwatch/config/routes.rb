@@ -16,7 +16,14 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
+  get "dishes/query" => "dishes#query", as: :dishes_query
 
+  resources :dishes do
+    collection do
+      get 'query'
+    end
+  end
+  
   resources :restaurants #Restful routes for RestaurantsController
   resources :restaurantmenus #Restful routes for RestaurantmenusController
   resources :restaurantcuisines #REST routes for RestaurantcuisinesController
@@ -24,6 +31,9 @@ Rails.application.routes.draw do
   resources :dishes #Restful routes for DishesController
   resources :dishingredients #Restful routes for DishingredientsController
   resources :dietaryviolations #Restful routes for DietaryViolationsController 
+  resources :users
+
+
 
   # Example resource route with options:
   #   resources :products do

@@ -10,7 +10,7 @@
     <th>Calories</th>
   </tr>
 
-  <% @dishes.each do |dish| %>
+    <% @dishes.each do |dish| %>
     <tr align="left">
       <td><%= dish.d_id %></td>
       <td><%= dish.name %></td>
@@ -20,7 +20,12 @@
       <td><%= dish.calories %></td>
     </tr>
   <% end %>
+
 </table>
+
+<div class="btn-group">
+  <%= link_to "Show only cheap dishes", dishes_query_path(@dishes) %>
+</div>
 
 <% if @next_page %>
   <nav>

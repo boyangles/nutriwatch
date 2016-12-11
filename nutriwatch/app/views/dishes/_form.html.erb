@@ -1,0 +1,30 @@
+<h3>Dish</h3>
+
+<% if @dishes.errors.any? %>
+  <div class="errors">
+    <% @dishes.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger"><%= message %></div>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_for @dishes do |f| %>
+<!-- to be finished -->
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class="form-group">
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  </div>
+  <div class="form-group">
+    <%= f.label :published_on, "Date Published" %>
+    <%= f.date_field :published_on %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <button class="btn btn-success" type="submit">Save</button>
+<% end %>
