@@ -74,6 +74,7 @@ INSERT INTO DishIngredients VALUES(1, 'Soybeans');
 INSERT INTO DietaryViolations VALUES('Dairy', 'Lactose Intolerant');
 INSERT INTO DietaryViolations VALUES('Soybeans', 'Vegan');*/
 
+/*
 COPY restaurants from '/home/tiffanyho1995/project/nutriwatch/data/RestaurantsTable.csv' DELIMITER ',' CSV;
 
 COPY RestaurantMenus from '/home/tiffanyho1995/project/nutriwatch/data/RestaurantMenusTable.csv' DELIMITER ',' CSV;
@@ -86,4 +87,19 @@ COPY Dishes from '/home/tiffanyho1995/project/nutriwatch/data/DishesTable.csv' D
 
 COPY DishIngredients from '/home/tiffanyho1995/project/nutriwatch/data/DishIngredientsTable.csv' DELIMITER ',' CSV;
 
-COPY DietaryViolations from '/home/tiffanyho1995/project/nutriwatch/data/DietaryViolationsTable.csv' DELIMITER ',' CSV;
+COPY DietaryViolations from '/home/tiffanyho1995/project/nutriwatch/data/DietaryViolationsTable.csv' DELIMITER ',' CSV; */
+
+-- TABLE: Restaurant
+-- R_ID
+CREATE FUNCTION TG_Restaurants_R_ID() RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.R_ID IN (SELECT R_ID FROM Restaurants) OR NEW.R_ID IS NULL
+    THEN 
+        RAISE EXCEPTION 'R_ID % has to be unique and cannot be NULL ', NEW.R_ID;
+    END IF;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TG_Restaurants_R_ID
+    BEFORE INSERT OR UPDATE ON Restaurants[
+    FOR EACH ROW
+    EXECUTE PROCEDURE TG_Restaurants_R_ID()];
