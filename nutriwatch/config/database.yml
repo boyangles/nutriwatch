@@ -24,7 +24,7 @@ default: &default
 development:
   <<: *default
   database: nutriwatch
-  host: 152.3.43.148 #ip of rails app
+  host: localhost #ip of rails app
   username: rails
   password: password
 
@@ -34,7 +34,7 @@ production:
   database: nutriwatch
   username: rails
   password: password
-  host: 152.3.43.148 #ip of rails app
+  host: localhost #ip of rails app
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
