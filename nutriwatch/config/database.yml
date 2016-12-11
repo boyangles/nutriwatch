@@ -24,9 +24,17 @@ default: &default
 development:
   <<: *default
   database: nutriwatch
-  host: localhost
+  host: localhost #ip of rails app
   username: rails
   password: password
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: nutriwatch
+  username: rails
+  password: password
+  host: localhost #ip of rails app
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -83,9 +91,9 @@ test:
 #
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
-#
-production:
-  <<: *default
-  database: nutriwatch_production
-  username: nutriwatch
-  password: <%= ENV['NUTRIWATCH_DATABASE_PASSWORD'] %>
+# 
+# production:
+#   <<: *default
+#   database: nutriwatch_production
+#   username: nutriwatch
+#   password: <%= ENV['NUTRIWATCH_DATABASE_PASSWORD'] %>

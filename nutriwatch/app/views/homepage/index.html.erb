@@ -1,8 +1,95 @@
-<div class="center jumbotron">
+<!-- <div class="center jumbotron">
   <h1>Welcome to the Nutriwatch (still iffy about the name tbh)</h1>
   <h2>
     This is the home page for all your dietary needs~
   </h2>
 
   <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+</div> -->
+
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<body>
+
+<!-- Header -->
+<header class="w3-display-container w3-content" style="max-width:1500px">
+  <img class="w3-image" src="/assets/homerestaurant.jpg" alt="Me" width="1500" height="600">
+  <div class="w3-display-middle w3-padding-xlarge w3-border w3-border-black w3-wide w3-text-black w3-center">
+    <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge">NUTRIWATCH</h1>
+    <h5 class="w3-hide-large" style="white-space:nowrap">NUTRIWATCH</h5>
+    <h3 class="w3-hide-medium w3-hide-small">A Food App</h3>
+  </div>
+  
+  <!-- Navbar (placed at the bottom of the header image) -->
+  <ul class="w3-navbar w3-light-grey w3-round w3-display-bottommiddle w3-hide-small" style="bottom:-16px">
+    <li><a href="#">Home</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</header>
+
+<!-- Navbar on small screens -->
+<ul class="w3-navbar w3-light-grey w3-hide-large w3-hide-medium">
+  <li><a href="#">Home</a></li>
+  <li><a href="#portfolio">Portfolio</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
+
+<!-- Page content -->
+<div class="w3-content w3-padding-xlarge w3-margin-top" id="portfolio">
+
+  <!-- Images (Portfolio) -->
+  <a data-toggle="modal" data-target="#pitchforksModal">
+  	<img src="/assets/pitchforks.jpg" alt="Ocean" class="w3-image" width="1000" height="500x">
+	</a>
+
+  <!-- Modal -->
+	<div class="modal fade" id="pitchforksModal" tabindex="-1" role="dialog" aria-labelledby="pitchforksLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="pitchforksLabel">Pitchforks Menu</h4>
+	      </div>
+	      <div class="modal-body">
+	        This is where the modal body lies. Information about the Picthforks menu lies here
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+
+
+  <img src="/assets/loop.jpg" alt="Ocean II" class="w3-image w3-margin-top" width="1000" height="500">
+
+  <!-- Contact -->
+  <div class="w3-light-grey w3-padding-xlarge w3-padding-32 w3-margin-top" id="contact">
+    <h3 class="w3-center">Contact</h3>
+    <hr>
+    <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus.</p>
+
+    <form action="form.asp" target="_blank">
+      <div class="w3-group">
+        <label>Name</label>
+        <input class="w3-input w3-border" type="text" required name="Name">
+      </div>
+      <div class="w3-group">
+        <label>Email</label>
+        <input class="w3-input w3-border" type="text" required name="Email">
+      </div>
+      <div class="w3-group">
+        <label>Message</label>
+        <input class="w3-input w3-border" required name="Message">
+      </div>
+      <button type="submit" class="w3-btn w3-btn-block w3-padding-12 w3-dark-grey">Send</button>
+    </form><br>
+
+  </div>
+
+<!-- End page <center></center>ontent -->
 </div>
+
+</body>
+</html>
