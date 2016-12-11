@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'homepage#index'
   get '/signup', to: 'users#new'
+  get '/form', to: 'homepage#form'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
