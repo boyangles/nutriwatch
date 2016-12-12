@@ -57,6 +57,10 @@ class DishesController < ApplicationController
     
   end
 
+  def form
+    @dishes = Dishes.new
+  end
+
   private
 
   def dishes_param
