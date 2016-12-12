@@ -53,6 +53,10 @@ class DishesController < ApplicationController
   	render :index
   end
 
+  def self.search(d_id: nil, r_id: nil, m_id: nil, name: nil, price: nil, rating: nil, cuisine: nil, calories: nil)
+    
+  end
+
   private
 
   def dishes_param
