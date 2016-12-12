@@ -1,3 +1,4 @@
+<% provide(:title, 'Filters') %>
 <h1>Filters<h1>
 <!-- 
 	Filter by:
@@ -8,6 +9,25 @@
 		Rating (range)
 		Dish (Wildcard name)
 -->
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @dishes, :url => dishes_path, :html => {:method => :post} do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
 
 <form class="form-horizontal">
 
@@ -111,9 +131,9 @@
 	 
 	<div class="form-group"> <!-- Submit Button -->
 		<div class="col-sm-10 col-sm-offset-2">                     
-			<button type="submit" class="btn btn-primary">Get Updates!</button>
+			<%= f.button  :submit , name: "filter",value: "filters"%>
 		</div>
 	</div>        
 	 
 </form>  
-
+ -->
