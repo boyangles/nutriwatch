@@ -9,7 +9,6 @@
 		Dish (Wildcard name)
 -->
 
-
 <form class="form-horizontal">
 
 	<div class="container">
@@ -25,35 +24,39 @@
 		<div class="row">
 			<div class="form-group"><!-- Cuisine Name -->
 				<label class="control-label col-sm-2">Cuisine</label>
-					<div class="col-sm-8">
-
-
+				
+				<div class="col-sm-8">
+					<% @restaurantcuisines.each do |restaurantcuisine| %>
 						<div class="row">
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="cuisine_choices" value="American">
-									American
-								</label>
-								<label>
-									<input type="checkbox" name="cuisine_choices" value="Chinese">
-									Chinese
+									<input type="checkbox" name="cuisine_choices" value="<%= restaurantcuisine.cuisine %>">
+									<%= restaurantcuisine.cuisine %>
 								</label>
 							</div>
 						</div>
+					<% end %>
+				</div>
 
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2">Dietary Restriction</label>
+					
+				<div class="col-sm-8">
+					<% @dietaryviolations.each do |dietaryviolation| %>
 						<div class="row">
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="cuisine_choices" value="Mexican">
-									Mexican
+									<input type="checkbox" name="diet_choices" value="<%= dietaryviolation.diet %>">
+									<%= dietaryviolation.diet %>
 								</label>
 							</div>
 						</div>
-
-
-
-
-					</div>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>						
