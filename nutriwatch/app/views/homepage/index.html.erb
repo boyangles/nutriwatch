@@ -9,9 +9,9 @@
 
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>Nutriwatch</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<!-- <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"> -->
 <body>
 
 <!-- Header -->
@@ -34,21 +34,14 @@
 <div class="w3-content w3-padding-xlarge w3-margin-top" id="portfolio">
 
   <!-- Images (Portfolio) -->
-  <a data-toggle="modal" data-target="#pitchforksModal">
-  	<img src="/assets/pitchforks.jpg" alt="Ocean" class="w3-image" width="1000" height="500x">
+  <a href="<%= restaurants_path %>" data-toggle="modal" data-target="#pitchforksModal">
+    <img src="<%= asset_path('pitchforks.jpg') %>" alt="Ocean" class="w3-image" width="1000" height="500x">
 	</a>
 
   <!-- Modal -->
 	<div class="modal fade" id="pitchforksModal" tabindex="-1" role="dialog" aria-labelledby="pitchforksLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	        <h4 class="modal-title" id="pitchforksLabel">Pitchforks Menu</h4>
-	      </div>
-	      <div class="modal-body">
-	        This is where the modal body lies. Information about the Picthforks menu lies here
-	      </div>
 	    </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
 	</div><!-- /.modal -->
