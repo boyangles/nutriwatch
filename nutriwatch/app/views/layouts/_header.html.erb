@@ -1,0 +1,27 @@
+  <header class="navbar navbar-fixed-top">
+    <div class="container-fluid" style="padding-top: 15px; padding-bottom: 15px;">
+      <div class="col-sm-1 col-sm-offset-11">
+        <nav>
+          <ul class="nav navbar-nav navbar-right w3-border w3-border-white w3-text-white">
+            <% if logged_in? %>
+            <li class="dropdown">
+              <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", '#' %></li>
+                <li class="divider"></li>
+                <li>
+                  <%= link_to "Log out", logout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+            <% else %>
+            <li><%= link_to "Log in", login_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
