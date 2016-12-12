@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   get 'homepage/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -8,6 +10,10 @@ Rails.application.routes.draw do
   root 'homepage#index'
   get 'users/signup', to: 'users#new'
   post 'users/signup',  to: 'users#create'
+
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  get '/logout',  to: 'sessions#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
