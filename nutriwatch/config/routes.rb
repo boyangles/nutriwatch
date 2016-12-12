@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'homepage#index'
+
+  get '/signup', to: 'users#new'
+  get '/form', to: 'homepage#form'
   get 'users/signup', to: 'users#new'
   post 'users/signup',  to: 'users#create'
 
