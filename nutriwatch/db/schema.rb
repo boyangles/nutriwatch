@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(version: 20161210073205) do
     t.string   "password_digest"
   end
 
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
   add_foreign_key "dishingredients", "dishes", column: "d_id", primary_key: "d_id", name: "dishingredients_d_id_fkey"
   add_foreign_key "restaurantcuisines", "restaurants", column: "r_id", primary_key: "r_id", name: "restaurantcuisines_r_id_fkey"
   add_foreign_key "restaurantmenus", "restaurants", column: "r_id", primary_key: "r_id", name: "restaurantmenus_r_id_fkey"
