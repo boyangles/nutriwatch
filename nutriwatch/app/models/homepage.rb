@@ -1,6 +1,6 @@
 class Homepage < ActiveRecord::Base
 
-	has_and_belongs_to_many :restaurantecuisine
+	has_and_belongs_to_many :restaurantcuisine
 	has_and_belongs_to_many :dietaryviolation
 
 	before_save { self.d_name = d_name.downcase } if ':d_name.present?'

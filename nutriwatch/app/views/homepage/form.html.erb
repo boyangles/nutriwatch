@@ -11,7 +11,7 @@
 -->
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-  	<%= form_for(@homepage, url: form_path) do |f| %>
+  	<%= form_for(@homepages, url: form_path) do |f| %>
   	# <%= render 'shared/error_messages_form' %>
   	  <%= f.label :dname, "Dish Name" %>
         <%= f.text_field :d_name %>
@@ -20,7 +20,7 @@
         <%= f.text_field :r_name %>
 
       <%= f.label :cuisine_name, "Cuisine" %>
-		<%= f.collection_check_boxes :ids, Restaurantcuisine.all, :id, :cuisine do |b| %>
+		<%= f.collection_check_boxes :restaurantcuisine_ids, Restaurantcuisine.all, :id, :cuisine do |b| %>
     	<div class="collection-check-box">
       		<%= b.check_box %>
       		<%= b.label %>
@@ -28,7 +28,7 @@
         <% end %>
 
       <%= f.label :violation_name, "Dietary Restriction" %>
-        <%= f.collection_check_boxes :dietaryviolation_ids, Dietaryviolation.all, :id, :diet do |b| %>
+        <%= f.collection_check_boxes :dietaryviolation_ids, Dietaryviolation.all, :id, :name do |b| %>
     	<div class="collection-check-box">
       		<%= b.check_box %>
       		<%= b.label %>

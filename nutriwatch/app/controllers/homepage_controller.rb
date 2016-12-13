@@ -8,7 +8,7 @@ class HomepageController < ApplicationController
   end
 
   def form 
-  	@homepage = Homepage.new(homepage_params)
+  	@homepages = Homepage.new(homepage_params)
     # @rcuisines = Restaurantcuisine.select(:cuisine).distinct
     # @dviolations = Dietaryviolation.select(:diet).distinct
     # @dishes = Dish.new
@@ -18,7 +18,7 @@ class HomepageController < ApplicationController
   def filter
   	flash[:success] = "yay you did it"
   	@dishes = Dish.find(params[:name])
-  	redirect_to @dishes
+  	# redirect_to @dishes
   	# render dishes_index_path
 
   	# :dish_name #if dish name is misspelled sucks for you
@@ -36,7 +36,7 @@ class HomepageController < ApplicationController
   private
 
   def homepage_params
-    params.permit(:d_name, :r_name, :c_min, :c_max, :r_min, :r_max, :p_min, :p_max, { :ids => [] }, { :dietaryviolation_ids => [] } )
+    params.permit(:d_name, :r_name, :c_min, :c_max, :r_min, :r_max, :p_min, :p_max, { :restaurantcuisine_ids => [] }, { :dietaryviolation_ids => [] } )
   end
 
 end
