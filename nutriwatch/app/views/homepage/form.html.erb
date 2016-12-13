@@ -33,13 +33,15 @@
   			  <%= dietaryviolation.diet %>
 		  <% end %>
         <% end %>
-      <div id="calory_slider"></div>
-      <label class="control-label col-sm-2">Calories</label>
-      	<b>0</b> <%= form_for :homepage, url: form_path do |cal| %>
+
+      
+	  <%= f.label "Calories" %>
+      	<%= form_for :homepage, url: form_path do |cal| %>
     		<%= cal.hidden_field :min_cal %>
     		<%= cal.hidden_field :max_cal %>
-    		<%= cal.submit "Submit" %> <b>5000</b>
+    		<%= cal.submit "Submit" %>
 		<% end %>
+      
         
     <% end %>
 
