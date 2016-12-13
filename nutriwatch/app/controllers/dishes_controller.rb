@@ -48,15 +48,6 @@ class DishesController < ApplicationController
     end
   end
 
-  def query
-  	@dishes = Dish.where('price < 7.0 AND r_id = 1').reload
-  	render :index
-  end
-
-  def self.search(d_id: nil, r_id: nil, m_id: nil, name: nil, price: nil, rating: nil, cuisine: nil, calories: nil)
-    
-  end
-
   def form
     @dishes = Dishes.new
   end

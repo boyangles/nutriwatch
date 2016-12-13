@@ -11,12 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210073205) do
+ActiveRecord::Schema.define(version: 20161213123731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "dietaryviolations", id: false, force: :cascade do |t|
+  create_table "DietaryViolations_Homepages", id: false, force: :cascade do |t|
+    t.integer "homepage_id",          null: false
+    t.integer "dietary_violation_id", null: false
+  end
+
+  create_table "Homepages_RestaurantCuisines", id: false, force: :cascade do |t|
+    t.integer "homepage_id",           null: false
+    t.integer "restaurant_cuisine_id", null: false
+  end
+
+  create_table "dietaryviolations", force: :cascade do |t|
     t.string "ingredient", limit: 50, null: false
     t.string "diet",       limit: 50, null: false
   end
@@ -36,11 +46,24 @@ ActiveRecord::Schema.define(version: 20161210073205) do
     t.string  "ingredient", limit: 50
   end
 
+  create_table "homepages", force: :cascade do |t|
+    t.string   "d_name"
+    t.string   "r_name"
+    t.integer  "c_min"
+    t.integer  "c_max"
+    t.integer  "r_min"
+    t.integer  "r_max"
+    t.integer  "p_min"
+    t.integer  "p_max"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ingredients", primary_key: "i_id", force: :cascade do |t|
     t.string "name", limit: 50, null: false
   end
 
-  create_table "restaurantcuisines", id: false, force: :cascade do |t|
+  create_table "restaurantcuisines", force: :cascade do |t|
     t.integer "r_id",               null: false
     t.string  "cuisine", limit: 50, null: false
   end
@@ -61,6 +84,7 @@ ActiveRecord::Schema.define(version: 20161210073205) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "password_digest"
+    t.string   "remember_digest"
   end
 
   add_foreign_key "dishingredients", "dishes", column: "d_id", primary_key: "d_id", name: "dishingredients_d_id_fkey"

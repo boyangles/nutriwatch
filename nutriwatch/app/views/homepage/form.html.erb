@@ -1,4 +1,4 @@
-<% provide(:title, 'Filters') %>
+<%= provide(:title, 'Filters') %>
 <h1>Filters<h1>
 <!-- 
 	Filter by:
@@ -11,38 +11,53 @@
 -->
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-  	<%= form_for(:homepage, url: form_path) do |f| %>
-  	  <%= f.label :dish_name, "Dish Name" %>
-        <%= f.text_field :dish_name %>
+  	<%= form_for(@homepage, url: form_path) do |f| %>
+  	# <%= render 'shared/error_messages_form' %>
+  	  <%= f.label :dname, "Dish Name" %>
+        <%= f.text_field :d_name %>
 
-      <%= f.label :restaurant_name, "Restaurant Name" %>
-        <%= f.text_field :restaurant_name %>
+      <%= f.label :rname, "Restaurant Name" %>
+        <%= f.text_field :r_name %>
 
       <%= f.label :cuisine_name, "Cuisine" %>
-        <% @restaurantcuisines.each do |restaurantcuisine| %>
-          <%= f.label :restaurant_cuisine, class: 'checkbox' do %>
-  			<%= f.check_box :restaurant_cuisine %>
-  			  <%= restaurantcuisine.cuisine %>
-		  <% end %>
+		<%= f.collection_check_boxes :ids, Restaurantcuisine.all, :id, :cuisine do |b| %>
+    	<div class="collection-check-box">
+      		<%= b.check_box %>
+      		<%= b.label %>
+    	</div>
         <% end %>
 
       <%= f.label :violation_name, "Dietary Restriction" %>
-        <% @dietaryviolations.each do |dietaryviolation| %>
-          <%= f.label :dietary_violation, class: 'checkbox' do %>
-  			<%= f.check_box :dietary_violation %>
-  			  <%= dietaryviolation.diet %>
-		  <% end %>
+        <%= f.collection_check_boxes :dietaryviolation_ids, Dietaryviolation.all, :id, :diet do |b| %>
+    	<div class="collection-check-box">
+      		<%= b.check_box %>
+      		<%= b.label %>
+    	</div>
         <% end %>
 
       
-	  <%= f.label "Calories" %>
-      	<%= form_for :homepage, url: form_path do |cal| %>
-      		$("#calorie_slider").slider({});
+	  <%= f.label "Calories"%>
+      	<%= form_for :homepage,  url: form_path do |cal| %>  	
+      		<div id="calorie_slider"></div>
     		<%= cal.hidden_field :cal_data1 %>
     		<%= cal.hidden_field :cal_data2 %>
-    		<%= cal.submit "Submit" %>
 		<% end %>
-      
+
+	  <%= f.label "Rating"%>
+      	<%= form_for :homepage,  url: form_path do |rate| %>
+      		<div id="rating_slider"></div>
+    		<%= rate.hidden_field :rate_data1 %>
+    		<%= rate.hidden_field :rate_data2 %>
+		<% end %>
+
+	  <%= f.label "Price Range"%>
+      	<%= form_for :homepage,  url: form_path do |price| %>
+      		<div id="price_slider"></div>
+    		<%= price.hidden_field :price_data1 %>
+    		<%= price.hidden_field :price_data2 %>
+		<% end %>
+
+	<%= f.submit "Filter my shiz!", class: "btn btn-primary" %>
         
     <% end %>
 
