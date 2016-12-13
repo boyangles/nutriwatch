@@ -11,8 +11,8 @@ $(document).ready ->
       5000
     ]
     slide: (event, ui) ->
-      $('#cal_data1').val ui.values[0]
-      $('#cal_data2').val ui.values[1]
+      $('#c_min').val ui.values[0]
+      $('#c_max').val ui.values[1]
       return
   )
 
@@ -25,8 +25,8 @@ $(document).ready ->
       5
     ]
     slide: (event, ui) ->
-      $('#rate_data1').val ui.values[0]
-      $('#rate_data2').val ui.values[1]
+      $('#r_min').val ui.values[0]
+      $('#r_max').val ui.values[1]
       return
   )
 
@@ -39,15 +39,15 @@ $(document).ready ->
       50
     ]
     slide: (event, ui) ->
-      $('#price_data1').val ui.values[0]
-      $('#price_data2').val ui.values[1]
+      $('#p_min').val ui.values[0]
+      $('#p_max').val ui.values[1]
       return
   )
 
-  $('#cal_data1').val slider.slider('values')[0]
-  $('#cal_data2').val slider.slider('values')[1]
-  $('#rate_data1').val slider.slider('values')[0]
-  $('#rate_data2').val slider.slider('values')[1]
-  $('#price_data1').val slider.slider('values')[0]
-  $('#price_data2').val slider.slider('values')[1]
+  $('#c_min').val slider.slider('values')[0]
+  $('#c_max').val slider.slider('values')[1]
+  $('#r_min').val slider.slider('values')[0]
+  $('#r_max').val slider.slider('values')[1]
+  $('#p_min').val slider.slider('values')[0]
+  $('#p_max').val slider.slider('values')[1]
   return

@@ -16,19 +16,14 @@ ActiveRecord::Schema.define(version: 20161213135435) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "dietaryviolations_homepages", id: false, force: :cascade do |t|
-    t.integer "homepage_id",          null: false
-    t.integer "dietary_violation_id", null: false
-  end
-
-  create_table "homepages_restaurantcuisines", id: false, force: :cascade do |t|
-    t.integer "homepage_id",           null: false
-    t.integer "restaurant_cuisines_id", null: false
-  end
-
   create_table "dietaryviolations", id: false, force: :cascade do |t|
     t.string "ingredient", limit: 50, null: false
     t.string "diet",       limit: 50, null: false
+  end
+
+  create_table "dietaryviolations_homepages", id: false, force: :cascade do |t|
+    t.integer "homepage_id",          null: false
+    t.integer "dietary_violation_id", null: false
   end
 
   create_table "dishes", primary_key: "d_id", force: :cascade do |t|
@@ -57,6 +52,11 @@ ActiveRecord::Schema.define(version: 20161213135435) do
     t.integer  "p_max"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "homepages_restaurantcuisines", id: false, force: :cascade do |t|
+    t.integer "homepage_id",            null: false
+    t.integer "restaurant_cuisines_id", null: false
   end
 
   create_table "ingredients", primary_key: "i_id", force: :cascade do |t|

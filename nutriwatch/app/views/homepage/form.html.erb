@@ -11,7 +11,7 @@
 -->
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-  	<%= form_for(@homepages, url: form_path) do |f| %>
+  	<%= form_for(@homepage, url: form_path) do |f| %>
   	# <%= render 'shared/error_messages_form' %>
   	  <%= f.label :dname, "Dish Name" %>
         <%= f.text_field :d_name %>
@@ -33,28 +33,36 @@
       		<%= b.check_box %>
       		<%= b.label %>
     	</div>
-        <% end %>
+      <% end %>
+
+     <%= f.label :violation_name, "Dietary Restriction" %> 
+      <% @restaurantcuisines.each do |b| %>
+        <%= f.label b.cuisine %>
+      		<%= check_box_tag "restaurantcuisine_ids[]", b.cuisine%>
+      		<%= b.label %>
+    	</div>
+      <% end %>
 
       
 	  <%= f.label "Calories"%>
       	<%= form_for :homepage,  url: form_path do |cal| %>  	
       		<div id="calorie_slider"></div>
-    		<%= cal.hidden_field :cal_data1 %>
-    		<%= cal.hidden_field :cal_data2 %>
+    		<%= cal.hidden_field :c_min %>
+    		<%= cal.hidden_field :c_max %>
 		<% end %>
 
 	  <%= f.label "Rating"%>
       	<%= form_for :homepage,  url: form_path do |rate| %>
       		<div id="rating_slider"></div>
-    		<%= rate.hidden_field :rate_data1 %>
-    		<%= rate.hidden_field :rate_data2 %>
+    		<%= rate.hidden_field :r_min %>
+    		<%= rate.hidden_field :r_max %>
 		<% end %>
 
 	  <%= f.label "Price Range"%>
       	<%= form_for :homepage,  url: form_path do |price| %>
       		<div id="price_slider"></div>
-    		<%= price.hidden_field :price_data1 %>
-    		<%= price.hidden_field :price_data2 %>
+    		<%= price.hidden_field :p_min %>
+    		<%= price.hidden_field :p_max %>
 		<% end %>
 
 	<%= f.submit "Filter my shiz!", class: "btn btn-primary" %>

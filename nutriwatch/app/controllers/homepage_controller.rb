@@ -8,9 +8,9 @@ class HomepageController < ApplicationController
   end
 
   def form 
-  	@homepages = Homepage.new(homepage_params)
-    # @rcuisines = Restaurantcuisine.select(:cuisine).distinct
-    # @dviolations = Dietaryviolation.select(:diet).distinct
+  	@homepage = Homepage.new(homepage_params)
+    @restaurantcuisines = Restaurantcuisine.select(:cuisine).distinct
+    @dietaryviolations = Dietaryviolation.select(:diet).distinct
     # @dishes = Dish.new
     # @results = params[:filter]
   end
