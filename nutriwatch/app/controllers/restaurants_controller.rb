@@ -18,8 +18,7 @@ class RestaurantsController < ApplicationController
   def destroy
     @restaurant = Restaurant.find params[:id]
     @restaurant.destroy
-    flash[:success] = "Destroyed Restaurant"
-    redirect_to homepage_index_path
+    redirect_to restaurants_path
   end
 
   def update
