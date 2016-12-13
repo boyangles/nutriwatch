@@ -37,8 +37,9 @@
       
 	  <%= f.label "Calories" %>
       	<%= form_for :homepage, url: form_path do |cal| %>
-    		<%= cal.hidden_field :min_cal %>
-    		<%= cal.hidden_field :max_cal %>
+      		$("#calorie_slider").slider({});
+    		<%= cal.hidden_field :cal_data1 %>
+    		<%= cal.hidden_field :cal_data2 %>
     		<%= cal.submit "Submit" %>
 		<% end %>
       

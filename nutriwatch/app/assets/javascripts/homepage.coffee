@@ -2,19 +2,22 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready ->
-  slider = $('#Calories').slider(
+  slider = $('#calorie_slider').slider(
     range: true
     min: 0
     max: 5000
+    tooltip: 'always'
+    step: 10
+    selection: 'before'
     values: [
       0
       5000
     ]
     slide: (event, ui) ->
-      $('#cal_min_cal').val ui.values[0]
-      $('#cal_max_cal').val ui.values[1]
+      $('#cal_data1').val ui.values[0]
+      $('#cal_data2').val ui.values[1]
       return
   )
-  $('#cal_min_cal').val slider.slider('values')[0]
-  $('#cal_max_cal').val slider.slider('values')[1]
+  $('#cal_data1').val slider.slider('values')[0]
+  $('#cal_data2').val slider.slider('values')[1]
   return
