@@ -38,14 +38,17 @@ class DishesController < ApplicationController
   end
 
   def create
-    @dishes = Dish.new dishes_params
+    @dishes = Dish.new dishes_param
 
-    if @dishes.save
-      flash[:success] = "Added Your Dish!"
-      redirect_to dishes_path(@dishes)
-    else
+    begin
+      if @dishes.save
+        flash[:success] = "Added Your Dish!"
+        redirect_to homepage_index_path
+      end
+    rescue ActiveRecord::ActiveRecordError
+      flash[:danger] = "Could not successfully add your dish at this time"
       render :new
-    end
+    end 
   end
 
   def query
