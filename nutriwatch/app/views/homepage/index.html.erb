@@ -26,6 +26,7 @@
 
     <ul class="w3-navbar w3-light-grey w3-round w3-hide-small w3-display-bottommiddle w3-border w3-border-black" style="bottom:-45px">
       <li><a href="#portfolio">Filters</a></li>
+      <li><a href="<%= restaurants_path %>">Restaurants</a></li>
     </ul>
   </div>
 </header>
@@ -34,35 +35,13 @@
 <div class="w3-content w3-padding-xlarge w3-margin-top" id="portfolio">
 
   <!-- Images (Portfolio) -->
-  <a href="<%= restaurants_path %>">
-    <img src="<%= asset_path('pitchforks.jpg') %>" alt="Ocean" class="w3-image" width="1000" height="500x">
+  <a href="<%= restaurant_path(1) %>">
+    <img src="<%= asset_path('pitchforks.jpg') %>" alt="pitchforks" class="w3-image" width="1000" height="500x">
 	</a>
 
-  <img src="/assets/loop.jpg" alt="Ocean II" class="w3-image w3-margin-top" width="1000" height="500">
-
-  <!-- Contact -->
-  <div class="w3-light-grey w3-padding-xlarge w3-padding-32 w3-margin-top" id="contact">
-    <h3 class="w3-center">Contact</h3>
-    <hr>
-    <p>Mauris neque quam, fermentum ut nisl vitae, convallis maximus nisl. Sed mattis nunc id lorem euismod placerat. Vivamus porttitor magna enim, ac accumsan tortor cursus at. Phasellus sed ultricies mi non congue ullam corper. Praesent tincidunt sed tellus.</p>
-
-    <form action="form.asp" target="_blank">
-      <div class="w3-group">
-        <label>Name</label>
-        <input class="w3-input w3-border" type="text" required name="Name">
-      </div>
-      <div class="w3-group">
-        <label>Email</label>
-        <input class="w3-input w3-border" type="text" required name="Email">
-      </div>
-      <div class="w3-group">
-        <label>Message</label>
-        <input class="w3-input w3-border" required name="Message">
-      </div>
-      <button type="submit" class="w3-btn w3-btn-block w3-padding-12 w3-dark-grey">Send</button>
-    </form><br>
-
-  </div>
+  <a href="<%= restaurant_path(2) %>">
+    <img src="<%= asset_path('loop.jpg') %>" alt="loop" class="w3-image w3-margin-top" width="1000" height="500x">
+	</a>
 
 <!-- End page <center></center>ontent -->
 </div>
