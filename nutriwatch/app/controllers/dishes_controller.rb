@@ -31,7 +31,7 @@ class DishesController < ApplicationController
 
     if @dishes.update dishes_param
       flash[:success] = "Updated Dishes!"
-      redirect_to dishes_path(@dishes)
+      redirect_to restaurant_path(@dishes.r_id)
     else
       render :edit
     end
@@ -60,7 +60,7 @@ class DishesController < ApplicationController
   private
 
   def dishes_param
-    params.require(:dishes).permit(:d_id, :r_id, :m_id, :name, :price, :rating, :cuisine, :calories)
+    params.require(:dish).permit(:d_id, :r_id, :m_id, :name, :price, :rating, :cuisine, :calories)
   end
   # [END create]
 

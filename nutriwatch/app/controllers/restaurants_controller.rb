@@ -12,7 +12,8 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @restaurant = Restaurant.find params[:id]    
+    @restaurant = Restaurant.find params[:id]
+    @restaurantdishes = Dish.select("d_id, name, price, rating, cuisine, calories").where(r_id: params[:id])
   end
 
   def destroy
