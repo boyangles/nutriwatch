@@ -19,29 +19,27 @@
       <%= f.label :rname, "Restaurant Name" %>
         <%= f.text_field :r_name %>
 
-      <%= f.label :cuisine_name, "Cuisine" %>
-		<%= f.collection_check_boxes :restaurantcuisine_ids, Restaurantcuisine.all, :id, :cuisine do |b| %>
-    	<div class="collection-check-box">
-      		<%= b.check_box %>
-      		<%= b.label %>
-    	</div>
-        <% end %>
+       <%= f.label :violation_name, "Dietary Restriction0.5" %>
+ <!--
+       <%= #hidden_field_tag "homepage[dietaryviolation_ids][]", nil %>
+        <% #Dietaryviolation.all.each do |dietaryviolation| %>
 
-      <%= f.label :violation_name, "Dietary Restriction" %>
-        <%= f.collection_check_boxes :dietaryviolation_ids, Dietaryviolation.all, :id, :name do |b| %>
-    	<div class="collection-check-box">
-      		<%= b.check_box %>
-      		<%= b.label %>
-    	</div>
-      <% end %>
+			<%= check_box_tag #{}"homepage[dietaryviolation_ids][]", dietaryviolation.id, @homepage.dietaryviolation_ids.include?(dietaryviolation.diet), #id: dom_id(dietaryviolation) %>
+			<%= label_tag dom_id(dietaryviolation), dietaryviolation.diet %><br>
+		  <% #end %> -->
 
-     <%= f.label :violation_name, "Dietary Restriction" %> 
-      <% @restaurantcuisines.each do |b| %>
-        <%= f.label b.cuisine %>
-      		<%= check_box_tag "restaurantcuisine_ids[]", b.cuisine%>
-      		<%= b.label %>
-    	</div>
-      <% end %>
+
+	<div class="food">
+       <%= f.label :food_name, "Restaurant Cuisine0.5" %>
+       <%= hidden_field_tag "homepage[restaurantcuisine_ids][]", nil %>
+        <% @restaurantcuisines.each do |restaurantcuisine| %>
+			<%= f.check_box "homepage[restaurantcuisine_ids][]", restaurantcuisine.id, @homepage.restaurantcuisine_ids.include?(restaurantcuisine.diet), id: dom_id(restaurantcuisine) %>
+			<%= label_tag dom_id(restaurantcuisine), restaurantcuisine.diet %><br>
+		  <% end %>
+	</div>
+
+
+
 
       
 	  <%= f.label "Calories"%>
@@ -64,6 +62,19 @@
     		<%= price.hidden_field :p_min %>
     		<%= price.hidden_field :p_max %>
 		<% end %>
+
+						<div class="col-sm-8">
+					<% @dietaryviolations.each do |dietaryviolation| %>
+						<div class="row">
+							<div class="checkbox">
+								<label>
+									<input type="checkbox" name="diet_choices" value="<%= dietaryviolation.diet %>">
+									<%= dietaryviolation.diet %>
+								</label>
+							</div>
+						</div>
+					<% end %>
+				</div>
 
 	<%= f.submit "Filter my shiz!", class: "btn btn-primary" %>
         
