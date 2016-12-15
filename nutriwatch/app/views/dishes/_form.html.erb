@@ -11,20 +11,37 @@
 <%= form_for @dishes do |f| %>
 <!-- to be finished -->
   <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.label :d_id, "Dish ID" %>
+    <%= f.text_field :d_id %>
   </div>
   <div class="form-group">
-    <%= f.label :author %>
-    <%= f.text_field :author %>
+    <%= f.label :r_id, "Restaurant ID" %>
+    <%= f.text_field :r_id %>
   </div>
   <div class="form-group">
-    <%= f.label :published_on, "Date Published" %>
-    <%= f.date_field :published_on %>
+    <%= f.label :m_id, "Menu ID" %>
+    <%= f.text_field :m_id %>
   </div>
   <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.label :name, "Dish Name" %>
+    <%= f.text_field :name %>
   </div>
+  <div class="form-group">
+    <%= f.label :price, "Price" %>
+    <%= f.number_field(:price, in: 0.0..50.0, step: 0.05) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :rating, "Rating" %>
+    <%= f.number_field(:rating, in: 0.0..5.0, step: 0.5) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :cuisine, "Cuisine" %>
+    <%= f.text_field :cuisine %>
+  </div>
+  <div class="form-group">
+    <%= f.label :calories, "Calories" %>
+    <%= f.number_field(:calories, in: 0.0..5000.0, step: 1) %>
+  </div>
+
   <button class="btn btn-success" type="submit">Save</button>
 <% end %>

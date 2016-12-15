@@ -31,31 +31,57 @@ class DishesController < ApplicationController
 
     if @dishes.update dishes_param
       flash[:success] = "Updated Dishes!"
-      redirect_to dishes_path(@dishes)
+      redirect_to restaurant_path(@dishes.r_id)
     else
       render :edit
     end
   end
 
   def create
-    @dishes = Dish.new dishes_params
+    @dishes = Dish.new dishes_param
 
-    if @dishes.save
-      flash[:success] = "Added Your Dish!"
-      redirect_to dishes_path(@dishes)
-    else
+    begin
+      if @dishes.save
+        flash[:success] = "Added Your Dish!"
+        redirect_to homepage_index_path
+      end
+    rescue ActiveRecord::ActiveRecordError
+      flash[:danger] = "Could not successfully add your dish at this time"
       render :new
-    end
+    end 
   end
 
   def form
     @dishes = Dishes.new
   end
+  
+  def query
+  	    @dishes = Dishingredient.find_by_sql("
+      SELECT DISTINCT dishes.d_id, dishes.r_id, dishes.m_id, dishes.name, dishes.price, dishes.rating, dishes.cuisine, dishes.calories
+      FROM dishes, (
+        SELECT DISTINCT d_id 
+        FROM dishes
+        WHERE r_id = 1
+      EXCEPT
+        SELECT DISTINCT d_id 
+        FROM dishingredients, (
+          SELECT DISTINCT ingredient 
+          FROM dietaryviolations 
+          WHERE diet='Vegan') AS r1 
+        WHERE r1.ingredient = dishingredients.ingredient ) AS r2
+      WHERE dishes.d_id = r2.d_id
+      ORDER BY dishes.d_id")
+
+  	render :index
+  end
+
+  def self.search(d_id: nil, r_id: nil, m_id: nil, name: nil, price: nil, rating: nil, cuisine: nil, calories: nil)
+  end
 
   private
 
   def dishes_param
-    params.require(:dishes).permit(:d_id, :r_id, :m_id, :name, :price, :rating, :cuisine, :calories)
+    params.require(:dish).permit(:d_id, :r_id, :m_id, :name, :price, :rating, :cuisine, :calories)
   end
   # [END create]
 

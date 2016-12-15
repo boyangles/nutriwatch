@@ -1,33 +1,46 @@
-<div class="modal-header">
-  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-  <h4 class="modal-title" id="pitchforksLabel">Pitchforks Menu</h4>
+<h1 style="color:white">Restaurants List</h1>
+
+<div class="modal fade" id="newRestaurantModal" tabindex="-1" role="dialog" aria-labelledby="newRestaurantLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      Testing
+    </div>
+  </div>
 </div>
 
-<div class="modal-body">
-  This is where the modal body lies. Information about the Picthforks menu lies here
+<a href="<%= new_restaurant_path %>" class="btn btn-success btn-sm" data-toggle="modal" data-target="#newRestaurantModal">
+  <i class="glyphicon glyphicon-plus"></i>
+  <span>Add New Restaurant</span>
+</a>
 
-  <h1>This is the corresponding database table for Restaurants</h1>
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4">
+    <section>
+      <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <thead>
+            <tr>
+              <th>Restaurant Name</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
 
-  <%= link_to new_restaurant_path, class: "btn btn-success btn-sm" do %>
-    <i class="glyphicon glyphicon-plus"></i>
-    <span>Add new Restaurant</span>
-  <% end %>
-
-  <table>
-    <tr>
-      <th>R_ID</th>
-      <th>Name</th>
-    </tr>
-
-    <% @restaurants.each do |restaurant| %>
-      <tr>
-        <td><%= restaurant.r_id %></td>
-        <td>
-          <%= link_to restaurant_path(restaurant) do %>
-            <%= restaurant.name %>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
+      <div class="tbl-content">
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tbody>
+            <% @restaurants.each do |restaurant| %>
+            <tr align="left">
+              <td>
+                <%= link_to restaurant_path(restaurant) do %>
+                  <%= restaurant.name %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
 </div>

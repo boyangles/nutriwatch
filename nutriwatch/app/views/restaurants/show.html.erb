@@ -1,12 +1,346 @@
-<h3>Indiviudal Book Information</h3>
+<% @restaurantdishes.each do |dish| %> 
+  <div class="modal fade" id="dishModal<%= dish.d_id %>" tabindex="-1" role="dialog" aria-labelledby="dish<%= dish.d_id %>Label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      </div>
+    </div>
+  </div>
+<% end %>
 
-<div class="btn-group">
-  <%= link_to edit_restaurant_path(@restaurant), class: "btn btn-primary btn-sm" do %>
-    <i class="glyphicon glyphicon-edit"></i>
-    <span>Edit Restaurant</span>
-  <% end %>
-  <%= link_to restaurant_path(@restaurant), class: "btn btn-danger btn-sm", method: :delete do %>
-    <i class="glyphicon glyphicon-trash"></i>
-    <span>Delete Restaurant</span>
-  <% end %>
+<div class="modal fade" id="newDishModal" tabindex="-1" role="dialog" aria-labelledby="newDishLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
 </div>
+
+<div class="container-fluid">
+  
+  <h1 style="color:white"><%= @restaurant.name %> Info</h1>
+  
+  <div class="row">
+    <div class="col-sm-offset-2">
+      <div class="btn-group" style="padding-top:50px">
+        <a href="<%= new_dish_path %>" class="btn btn-success btn-sm" data-toggle="modal" data-target="#newDishModal">
+          <i class="glyphicon glyphicon-plus"></i>
+          <span>Add New Dish</span>
+        </a>
+        
+        <%= link_to edit_restaurant_path(@restaurant), class: "btn btn-primary btn-sm" do %>
+          <i class="glyphicon glyphicon-edit"></i>
+          <span>Edit Restaurant</span>
+        <% end %>
+        <%= link_to restaurant_path(@restaurant), class: "btn btn-danger btn-sm", method: :delete do %>
+          <i class="glyphicon glyphicon-trash"></i>
+          <span>Delete Restaurant</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diet Modal Buttons -->
+  <div class="row" style="padding-top:20px">
+
+    <div class="col-sm-2 col-sm-offset-2">
+      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#veganFilterModal">
+        Vegan Options
+      </button>
+    </div>
+
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#vegetarianFilterModal">
+        Vegetarian Options
+      </button>
+    </div>
+
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#glutenFreeFilterModal">
+        Gluten Free Options
+      </button>
+    </div>
+
+    <div class="col-sm-2">
+      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#nutAllergyFilterModal">
+        Nut Free Options
+      </button>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-sm-offset-1">
+
+      <section>
+        <div class="tbl-header">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <thead>
+              <tr>
+                <th>Dish Name</th>
+                <th>Price</th>
+                <th>Rating</th>
+                <th>Cuisine</th>
+                <th>Calories</th>
+                <th>Delete/Edit</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+
+        <div class="tbl-content">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tbody>
+              <% @restaurantdishes.each do |dish| %>
+                <tr align="left">
+                  <td><%= dish.name %></td>
+                  <td><%= dish.price %></td>
+                  <td><%= dish.rating %></td>
+                  <td><%= dish.cuisine %></td>
+                  <td><%= dish.calories %></td>
+                  <td>
+                    <div class="btn-group">
+                      <a href="<%= edit_dish_path(dish.d_id) %>" class="btn btn-info btn-sm" data-toggle="modal" data-target="#dishModal<%= dish.d_id %>">
+                        <i class="glyphicon glyphicon-edit"></i>
+                        <span>Edit Dish</span>
+                      </a>
+
+                      <%= link_to dish_path(dish.d_id), class: "btn btn-danger btn-sm", method: :delete do %>
+                        <i class="glyphicon glyphicon-trash"></i>
+                        <span>Delete Dish</span>
+                      <% end %>
+                    </div>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+  <div class="modal fade" id="veganFilterModal" tabindex="-1" role="dialog" aria-labelledby="veganFilterLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="background-color:#22384f">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="veganFilterLabel" style="color:white">Vegan Dishes</h4>
+        </div>
+
+        <div class="modal-body">
+            <!-- Vegan Dishes -->
+          <div class="row">
+            <div class="col-sm-offset-1">
+              <section>
+                <div class="tbl-header">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                      <tr>
+                        <th>Dish Name</th>
+                        <th>Price</th>
+                        <th>Rating</th>
+                        <th>Cuisine</th>
+                        <th>Calories</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+
+                <div class="tbl-content">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                      <% @vegandishes.each do |dish| %>
+                        <tr align="left">
+                          <td><%= dish.name %></td>
+                          <td><%= dish.price %></td>
+                          <td><%= dish.rating %></td>
+                          <td><%= dish.cuisine %></td>
+                          <td><%= dish.calories %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="vegetarianFilterModal" tabindex="-1" role="dialog" aria-labelledby="vegetarianFilterLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="background-color:#22384f">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="vegetarianFilterLabel" style="color:white">Vegetarian Dishes</h4>
+        </div>
+
+        <div class="modal-body">
+            <!-- Vegetarian Dishes -->
+          <div class="row">
+            <div class="col-sm-offset-1">
+              <section>
+                <div class="tbl-header">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                      <tr>
+                        <th>Dish Name</th>
+                        <th>Price</th>
+                        <th>Rating</th>
+                        <th>Cuisine</th>
+                        <th>Calories</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+
+                <div class="tbl-content">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                      <% @vegetariandishes.each do |dish| %>
+                        <tr align="left">
+                          <td><%= dish.name %></td>
+                          <td><%= dish.price %></td>
+                          <td><%= dish.rating %></td>
+                          <td><%= dish.cuisine %></td>
+                          <td><%= dish.calories %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="glutenFreeFilterModal" tabindex="-1" role="dialog" aria-labelledby="glutenFreeFilterLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="background-color:#22384f">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="glutenFreeFilterLabel" style="color:white">Gluten Free Dishes</h4>
+        </div>
+
+        <div class="modal-body">
+            <!-- Gluten Free Dishes -->
+          <div class="row">
+            <div class="col-sm-offset-1">
+              <section>
+                <div class="tbl-header">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                      <tr>
+                        <th>Dish Name</th>
+                        <th>Price</th>
+                        <th>Rating</th>
+                        <th>Cuisine</th>
+                        <th>Calories</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+
+                <div class="tbl-content">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                      <% @glutenfreedishes.each do |dish| %>
+                        <tr align="left">
+                          <td><%= dish.name %></td>
+                          <td><%= dish.price %></td>
+                          <td><%= dish.rating %></td>
+                          <td><%= dish.cuisine %></td>
+                          <td><%= dish.calories %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="nutAllergyFilterModal" tabindex="-1" role="dialog" aria-labelledby="nutAllergyFilterLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="background-color:#22384f">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="nutAllergyFilterLabel" style="color:white">Nut Free Dishes</h4>
+        </div>
+
+        <div class="modal-body">
+          <!-- Nut Allergy Dishes -->
+          <div class="row">
+            <div class="col-sm-offset-1">
+              <section>
+                <div class="tbl-header">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                      <tr>
+                        <th>Dish Name</th>
+                        <th>Price</th>
+                        <th>Rating</th>
+                        <th>Cuisine</th>
+                        <th>Calories</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+
+                <div class="tbl-content">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                      <% @nutallergydishes.each do |dish| %>
+                        <tr align="left">
+                          <td><%= dish.name %></td>
+                          <td><%= dish.price %></td>
+                          <td><%= dish.rating %></td>
+                          <td><%= dish.cuisine %></td>
+                          <td><%= dish.calories %></td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+$(window).on("load resize ", function() {
+  var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+  $('.tbl-header').css({'padding-right':scrollWidth});
+}).resize();
+</script>

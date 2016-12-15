@@ -1,0 +1,19 @@
+Members:
+* Austin Liu (abl17)
+* Tina Liang (tl150)
+* Tiffany Ho (th184)
+ 
+=========================
+Team member contributions
+=========================
+Austin:
+  SQL queries for searching by diet
+  Created data model in Ruby and postgres
+  Bootstrap/CSS of site
+  Linked user-visible CRUD operations to DB
+  Error-handling
+Tina: #TODO
+  Implemented users
+  Implemented filtering/querying
+
+Tiffany: #TODO

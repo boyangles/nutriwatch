@@ -1,11 +1,11 @@
 <h3>Dish</h3>
 
 <div class="btn-group">
-  <%= link_to edit_dishes_path(@dishes), class: "btn btn-primary btn-sm" do %>
+  <%= link_to edit_dish_path(@dishes), class: "btn btn-primary btn-sm" do %>
     <i class="glyphicon glyphicon-edit"></i>
     <span>Edit Dish</span>
   <% end %>
-  <%= link_to dishes_path(@dishes), class: "btn btn-danger btn-sm", method: :delete do %>
+  <%= link_to dish_path(@dishes), class: "btn btn-danger btn-sm", method: :delete do %>
     <i class="glyphicon glyphicon-trash"></i>
     <span>Delete Dish</span>
   <% end %>

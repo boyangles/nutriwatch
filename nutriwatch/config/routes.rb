@@ -11,6 +11,14 @@ Rails.application.routes.draw do
 
   get '/form', to: 'homepage#form'
   post '/form', to: 'homepage#filter'
+
+  get 'dishes/query', to: "dishes#query", as: :dishes_query
+  resources :dishes do
+    collection do
+      get 'query'
+    end
+  end
+
   get 'users/signup', to: 'users#new'
   post 'users/signup',  to: 'users#create'
 
@@ -29,13 +37,8 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  get "dishes/query" => "dishes#query", as: :dishes_query
 
-  resources :dishes do
-    collection do
-      get 'query'
-    end
-  end
+
   
   resources :restaurants #Restful routes for RestaurantsController
   resources :restaurantmenus #Restful routes for RestaurantmenusController
