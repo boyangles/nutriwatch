@@ -1,9 +1,17 @@
 <h1 style="color:white">Restaurants List</h1>
 
-<%= link_to new_restaurant_path, class: "btn btn-success btn-sm" do %>
+<div class="modal fade" id="newRestaurantModal" tabindex="-1" role="dialog" aria-labelledby="newRestaurantLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      Testing
+    </div>
+  </div>
+</div>
+
+<a href="<%= new_restaurant_path %>" class="btn btn-success btn-sm" data-toggle="modal" data-target="#newRestaurantModal">
   <i class="glyphicon glyphicon-plus"></i>
-  <span>Add new Restaurant</span>
-<% end %>
+  <span>Add New Restaurant</span>
+</a>
 
 <div class="row">
   <div class="col-sm-4 col-sm-offset-4">
