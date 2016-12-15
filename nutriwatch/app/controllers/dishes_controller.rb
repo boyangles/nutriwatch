@@ -51,6 +51,10 @@ class DishesController < ApplicationController
     end 
   end
 
+  def form
+    @dishes = Dishes.new
+  end
+  
   def query
   	    @dishes = Dishingredient.find_by_sql("
       SELECT DISTINCT dishes.d_id, dishes.r_id, dishes.m_id, dishes.name, dishes.price, dishes.rating, dishes.cuisine, dishes.calories
@@ -72,7 +76,6 @@ class DishesController < ApplicationController
   end
 
   def self.search(d_id: nil, r_id: nil, m_id: nil, name: nil, price: nil, rating: nil, cuisine: nil, calories: nil)
-    
   end
 
   private

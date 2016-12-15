@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'homepage#index'
 
-  get '/signup', to: 'users#new'
   get '/form', to: 'homepage#form'
   post '/form', to: 'homepage#filter'
 
@@ -19,8 +18,12 @@ Rails.application.routes.draw do
       get 'query'
     end
   end
+
   get 'users/signup', to: 'users#new'
   post 'users/signup',  to: 'users#create'
+
+  get    '/filter',   to: 'homepage#new'
+  post   '/filter',   to: 'homepage#create'
 
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
@@ -44,6 +47,7 @@ Rails.application.routes.draw do
   resources :dishes #Restful routes for DishesController
   resources :dishingredients #Restful routes for DishingredientsController
   resources :dietaryviolations #Restful routes for DietaryViolationsController 
+  resources :homepage
   resources :users
 
 

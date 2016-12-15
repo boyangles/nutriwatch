@@ -1,0 +1,57 @@
+<% provide(:title, 'Filters') %>
+<h1>Filters</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@homepage, url: filter_path) do |f| %>
+
+      <%= f.label "Dish Name"%>
+      <%= f.text_field :d_name, class: 'form-control' %>
+
+      <%= f.label "Restaurant" %>
+      <%= f.email_field :r_name, class: 'form-control' %>
+
+      <%= f.label "Restaurant Cuisine" %>
+        <%= f.collection_check_boxes(:restaurantcuisine_ids, Restaurantcuisine.all, :cuisine, :cuisine) do |b| %>
+        <%= b.label class:"label-checkbox" do%>
+        <%=b.check_box + b.text%>
+        <%end%>
+    <% end %>
+
+    <%= f.label "Dietary Violation" %>
+        <%= f.collection_check_boxes(:dietaryviolation_ids, Dietaryviolation.all, :diet, :diet) do |b| %>
+        <%= b.label class:"label-checkbox" do%>
+        <%=b.check_box + b.text%>
+        <%end%>
+    <% end %>
+
+   <%= f.label "Calories"%>
+        <%= form_for :homepage,  url: form_path do |cal| %>   
+          <div id="calorie_slider"></div>
+        <%= cal.hidden_field :c_min, class: 'form-control' %>
+        <%= cal.hidden_field :c_max, class: 'form-control' %>
+    <% end %>
+
+    <%= f.label "Rating"%>
+        <%= form_for :homepage,  url: form_path do |rate| %>
+          <div id="rating_slider"></div>
+        <%= rate.hidden_field :r_min, class: 'form-control' %>
+        <%= rate.hidden_field :r_max, class: 'form-control' %>
+    <% end %>
+
+    <%= f.label "Price Range"%>
+        <%= form_for :homepage,  url: form_path do |price| %>
+          <div id="price_slider"></div>
+        <%= price.hidden_field :p_min, class: 'form-control' %>
+        <%= price.hidden_field :p_max, class: 'form-control' %>
+    <% end %>
+
+  	<%= f.submit "Filter my shiz!", class: "btn btn-primary" %>
+  	<%= button_to 'Filter my shiz', method: :put, d_name: 'homepage[d_name]' %>
+	<%= link_to 'submit', :onclick => "$('filter_post_path').submit()" %>
+	<%= submit_tag 'eff u too' %>
+        
+    <% end %>
+
+  </div>
+</div>
