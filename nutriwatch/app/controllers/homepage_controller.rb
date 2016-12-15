@@ -1,16 +1,18 @@
 class HomepageController < ApplicationController
 
   def index
+    @homepage = Homepage.new
   end
 
   def new
 		@homepage = Homepage.new
   end
 
-  def form 
+  def form
+    @homepage = Homepage.new
     @restaurantcuisines = Restaurantcuisine.select(:cuisine).distinct
     @dietaryviolations = Dietaryviolation.select(:diet).distinct
-  	@homepage = Homepage.new(homepage_params)
+  	
 
     # @dishes = Dish.new
     # @results = params[:filter]
@@ -22,6 +24,7 @@ class HomepageController < ApplicationController
   end
 
   def filter
+    @homepage = Homepage.new
   	flash[:success] = "yay you did it"
   	@dishes = Dish.find(params[:name])
   	# redirect_to @dishes

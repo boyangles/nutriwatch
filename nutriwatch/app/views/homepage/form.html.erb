@@ -1,195 +1,56 @@
-<%= provide(:title, 'Filters') %>
-<h1>Filters<h1>
-<!-- 
-	Filter by:
-		Restaurant Name (Wildcard name)
-		Cuisine (Checkmarks // all or many)
-		Diet (Checkmarks // none or many)
-		Calories (range)
-		Rating (range)
-		Dish (Wildcard name)
--->
+<% provide(:title, 'Filters') %>
+<h1>Filters</h1>
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-  	<%= form_for(@homepage, url: form_path) do |f| %>
-  	# <%= render 'shared/error_messages_form' %>
-  	  <%= f.label :dname, "Dish Name" %>
-        <%= f.text_field :d_name %>
+    <%= form_for(@homepage, url: form_path) do |f| %>
+      <%= render 'shared/error_messages_form' %>
 
-      <%= f.label :rname, "Restaurant Name" %>
-        <%= f.text_field :r_name %>
+      <%= f.label "Dish Name"%>
+      <%= f.text_field :d_name, class: 'form-control' %>
 
-       <%= f.label :violation_name, "Dietary Restriction0.5" %>
- <!--
-       <%= #hidden_field_tag "homepage[dietaryviolation_ids][]", nil %>
-        <% #Dietaryviolation.all.each do |dietaryviolation| %>
+      <%= f.label "Restaurant" %>
+      <%= f.email_field :r_name, class: 'form-control' %>
 
-			<%= check_box_tag #{}"homepage[dietaryviolation_ids][]", dietaryviolation.id, @homepage.dietaryviolation_ids.include?(dietaryviolation.diet), #id: dom_id(dietaryviolation) %>
-			<%= label_tag dom_id(dietaryviolation), dietaryviolation.diet %><br>
-		  <% #end %> -->
+      <%= f.label "Restaurant Cuisine" %>
+        <%= f.collection_check_boxes(:restaurantcuisine_ids, @restaurantcuisines, :cuisine, :cuisine) do |b| %>
+        <%= b.label class:"label-checkbox" do%>
+        <%=b.check_box + b.text%>
+        <%end%>
+    <% end %>
 
+    <%= f.label "Dietary Violation" %>
+        <%= f.collection_check_boxes(:dietaryviolation_ids, @dietaryviolations, :diet, :diet) do |b| %>
+        <%= b.label class:"label-checkbox" do%>
+        <%=b.check_box + b.text%>
+        <%end%>
+    <% end %>
 
-	<div class="food">
-       <%= f.label :food_name, "Restaurant Cuisine0.5" %>
-       <%= hidden_field_tag "homepage[restaurantcuisine_ids][]", nil %>
-        <% @restaurantcuisines.each do |restaurantcuisine| %>
-			<%= f.check_box "homepage[restaurantcuisine_ids][]", restaurantcuisine.id, @homepage.restaurantcuisine_ids.include?(restaurantcuisine.diet), id: dom_id(restaurantcuisine) %>
-			<%= label_tag dom_id(restaurantcuisine), restaurantcuisine.diet %><br>
-		  <% end %>
-	</div>
+   <%= f.label "Calories"%>
+        <%= form_for :homepage,  url: form_path do |cal| %>   
+          <div id="calorie_slider"></div>
+        <%= cal.hidden_field :c_min, class: 'form-control' %>
+        <%= cal.hidden_field :c_max, class: 'form-control' %>
+    <% end %>
 
+    <%= f.label "Rating"%>
+        <%= form_for :homepage,  url: form_path do |rate| %>
+          <div id="rating_slider"></div>
+        <%= rate.hidden_field :r_min, class: 'form-control' %>
+        <%= rate.hidden_field :r_max, class: 'form-control' %>
+    <% end %>
 
+    <%= f.label "Price Range"%>
+        <%= form_for :homepage,  url: form_path do |price| %>
+          <div id="price_slider"></div>
+        <%= price.hidden_field :p_min, class: 'form-control' %>
+        <%= price.hidden_field :p_max, class: 'form-control' %>
+    <% end %>
 
-
-      
-	  <%= f.label "Calories"%>
-      	<%= form_for :homepage,  url: form_path do |cal| %>  	
-      		<div id="calorie_slider"></div>
-    		<%= cal.hidden_field :c_min %>
-    		<%= cal.hidden_field :c_max %>
-		<% end %>
-
-	  <%= f.label "Rating"%>
-      	<%= form_for :homepage,  url: form_path do |rate| %>
-      		<div id="rating_slider"></div>
-    		<%= rate.hidden_field :r_min %>
-    		<%= rate.hidden_field :r_max %>
-		<% end %>
-
-	  <%= f.label "Price Range"%>
-      	<%= form_for :homepage,  url: form_path do |price| %>
-      		<div id="price_slider"></div>
-    		<%= price.hidden_field :p_min %>
-    		<%= price.hidden_field :p_max %>
-		<% end %>
-
-						<div class="col-sm-8">
-					<% @dietaryviolations.each do |dietaryviolation| %>
-						<div class="row">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="diet_choices" value="<%= dietaryviolation.diet %>">
-									<%= dietaryviolation.diet %>
-								</label>
-							</div>
-						</div>
-					<% end %>
-				</div>
-
-	<%= f.submit "Filter my shiz!", class: "btn btn-primary" %>
+  <%= f.submit "Filter my shiz!", class: "btn btn-primary" %>
+  <%= button_to 'Filter my shiz', method: :put %>
         
     <% end %>
 
   </div>
 </div>
-
-
-<!--
-<form class="form-horizontal">
-
-	<div class="container">
-		<div class="row">
-			<div class="form-group"> <!-- Dish Name 
-				<label for="full_dish_id requiredField" class="control-label col-sm-2">Dish Name</label>
-				<div class="col-sm-8">
-					<input type="text" class="form-control w3-text-blue" id="full_dish_id" name="full_dish" placeholder="Dish Name">
-				</div>  
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="form-group"> <!-- Restaurant Name 
-				<label for="full_restaurant_id requiredField" class="control-label col-sm-2">Restaurant</label>
-				<div class="col-sm-8">
-					<input type="text" class="form-control w3-text-blue" id="full_restaurant_id" name="full_restaurant" placeholder="Restaurant Name">
-				</div>  
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="form-group"><!-- Cuisine Name 
-				<label class="control-label col-sm-2">Cuisine</label>
-				
-				<div class="col-sm-8">
-					<% @restaurantcuisines.each do |restaurantcuisine| %>
-						<div class="row">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="cuisine_choices" value="<%= restaurantcuisine.cuisine %>">
-									<%= restaurantcuisine.cuisine %>
-								</label>
-							</div>
-						</div>
-					<% end %>
-				</div>
-
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="form-group">
-				<label class="control-label col-sm-2">Dietary Restriction</label>
-					
-				<div class="col-sm-8">
-					<% @dietaryviolations.each do |dietaryviolation| %>
-						<div class="row">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="diet_choices" value="<%= dietaryviolation.diet %>">
-									<%= dietaryviolation.diet %>
-								</label>
-							</div>
-						</div>
-					<% end %>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="form-group">
-				<label class="control-label col-sm-2">Calories</label>
-
-				<div class="col-sm-8">
-					<b>0</b> <input id="calories_slider" type="text" class="span_calories" value="" data-slider-min="0" data-slider-max="5000" data-slider-step="25" data-slider-value="[0,1500]"/> <b>5000</b>
-					<script>
-						$("#calories_slider").slider({});
-					</script>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="form-group">
-				<label class="control-label col-sm-2">Rating</label>
-
-				<div class="col-sm-8">
-					<b>0</b> <input id="rating_slider" type="text" class="span_rating" value="" data-slider-min="0" data-slider-max="5" data-slider-step="0.5" data-slider-value="[0,5]"/> <b>5</b>
-					<script>
-						$("#rating_slider").slider({});
-					</script>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="form-group">
-				<label class="control-label col-sm-2">Price Range</label>
-
-				<div class="col-sm-8">
-					<b>0</b> <input id="price_slider" type="text" class="span_price" value="" data-slider-min="0" data-slider-max="50" data-slider-step="0.5" data-slider-value="[0,25]"/> <b>50</b>
-					<script>
-						$("#price_slider").slider({});
-					</script>
-				</div>
-			</div>
-		</div>
-	</div>						
-	 
-	<div class="form-group"> <!-- Submit Button 
-		<div class="col-sm-10 col-sm-offset-2">                     
-
-		</div>
-	</div>        
-	 
-</form>  
- -->
