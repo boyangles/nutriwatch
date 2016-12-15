@@ -4,7 +4,6 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@homepage, url: form_path) do |f| %>
-      <%= render 'shared/error_messages_form' %>
 
       <%= f.label "Dish Name"%>
       <%= f.text_field :d_name, class: 'form-control' %>
@@ -13,14 +12,14 @@
       <%= f.email_field :r_name, class: 'form-control' %>
 
       <%= f.label "Restaurant Cuisine" %>
-        <%= f.collection_check_boxes(:restaurantcuisine_ids, @restaurantcuisines, :cuisine, :cuisine) do |b| %>
+        <%= f.collection_check_boxes(:restaurantcuisine_ids, Restaurantcuisine.all, :cuisine, :cuisine) do |b| %>
         <%= b.label class:"label-checkbox" do%>
         <%=b.check_box + b.text%>
         <%end%>
     <% end %>
 
     <%= f.label "Dietary Violation" %>
-        <%= f.collection_check_boxes(:dietaryviolation_ids, @dietaryviolations, :diet, :diet) do |b| %>
+        <%= f.collection_check_boxes(:dietaryviolation_ids, Dietaryviolation.all, :diet, :diet) do |b| %>
         <%= b.label class:"label-checkbox" do%>
         <%=b.check_box + b.text%>
         <%end%>
@@ -48,7 +47,7 @@
     <% end %>
 
   	<%= f.submit "Filter my shiz!", class: "btn btn-primary", method: :put %>
-  	<%= button_to 'Filter my shiz', method: :put, params: {d_name: :d_name} %>
+  	<%= button_to 'Filter my shiz', method: :put %>
 	<%= link_to 'submit', :onclick => "$('#homepage').submit()" %>
 	<%= submit_tag 'eff u too' %>
         
