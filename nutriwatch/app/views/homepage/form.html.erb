@@ -1,4 +1,4 @@
-<h1>Filters<h1>
+<h1>Filters</h1>
 <!-- 
 	Filter by:
 		Restaurant Name (Wildcard name)
@@ -9,7 +9,8 @@
 		Dish (Wildcard name)
 -->
 
-<form class="form-horizontal">
+<form class="form-horizontal" id="why">
+
 
 	<div class="container">
 		<div class="row">
@@ -39,7 +40,7 @@
 						<div class="row">
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="cuisine_choices" value="<%= restaurantcuisine.cuisine %>">
+									<input type="checkbox" name="cuisine_choices[]" value="<%= restaurantcuisine.cuisine %>" >
 									<%= restaurantcuisine.cuisine %>
 								</label>
 							</div>
@@ -59,7 +60,7 @@
 						<div class="row">
 							<div class="checkbox">
 								<label>
-									<input type="checkbox" name="diet_choices" value="<%= dietaryviolation.diet %>">
+									<input type="checkbox" name="diet_choices[]" value="<%= dietaryviolation.diet %>" >
 									<%= dietaryviolation.diet %>
 								</label>
 							</div>
@@ -75,9 +76,12 @@
 
 				<div class="col-sm-8">
 					<b>0</b> <input id="calories_slider" type="text" class="span_calories" value="" data-slider-min="0" data-slider-max="5000" data-slider-step="25" data-slider-value="[0,1500]"/> <b>5000</b>
+					<input type="hidden" id="cal_range" name="cal_range"/>
 					<script>
 						$("#calories_slider").slider({});
+						$('#cal_range').val($('#calories_slider').data('slider').getValue())
 					</script>
+					
 				</div>
 			</div>
 		</div>
@@ -88,8 +92,10 @@
 
 				<div class="col-sm-8">
 					<b>0</b> <input id="rating_slider" type="text" class="span_rating" value="" data-slider-min="0" data-slider-max="5" data-slider-step="0.5" data-slider-value="[0,5]"/> <b>5</b>
+					<input type="hidden" id="rating_range" name="rating_range"/>
 					<script>
 						$("#rating_slider").slider({});
+						$('#rating_range').val($('#rating_slider').data('slider').getValue())
 					</script>
 				</div>
 			</div>
@@ -98,11 +104,12 @@
 		<div class="row">
 			<div class="form-group">
 				<label class="control-label col-sm-2">Price Range</label>
-
 				<div class="col-sm-8">
 					<b>0</b> <input id="price_slider" type="text" class="span_price" value="" data-slider-min="0" data-slider-max="50" data-slider-step="0.5" data-slider-value="[0,25]"/> <b>50</b>
+					<input type="hidden" id="price_range" name="price_range" />
 					<script>
 						$("#price_slider").slider({});
+						$('#price_range').val($('#price_slider').data('slider').getValue())
 					</script>
 				</div>
 			</div>
@@ -110,10 +117,16 @@
 	</div>						
 	 
 	<div class="form-group"> <!-- Submit Button -->
-		<div class="col-sm-10 col-sm-offset-2">                     
-			<button type="submit" class="btn btn-primary">Get Updates!</button>
+		<div class="col-sm-10 col-sm-offset-2">      
+			<button type="submit" class="btn btn-primary" action="/dishes/query">Get Updates!</button>
+			<!-- <div class: "btn btn-small btn-primary"> -->
+			<%= button_to 'Filter my shiz',  method: :post %>
+			<!-- </div> -->
+
 		</div>
-	</div>        
-	 
+	</div>  
+
+
+
 </form>  
 

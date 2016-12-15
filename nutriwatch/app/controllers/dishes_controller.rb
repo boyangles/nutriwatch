@@ -6,6 +6,8 @@ class DishesController < ApplicationController
     dish_offset = PER_PAGE * (page_number - 1)
     @dishes     = Dish.limit(PER_PAGE).offset(dish_offset)
     @next_page  = page_number + 1 if @dishes.count == PER_PAGE
+
+    redirect_to @dishes
   end
 
   def new
@@ -54,6 +56,7 @@ class DishesController < ApplicationController
   def query
   	@dishes = Dish.where('price < 7.0 AND r_id = 1').reload
   	render :index
+    return
   end
 
   def self.search(d_id: nil, r_id: nil, m_id: nil, name: nil, price: nil, rating: nil, cuisine: nil, calories: nil)
