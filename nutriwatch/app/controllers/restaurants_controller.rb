@@ -98,11 +98,17 @@ class RestaurantsController < ApplicationController
   def update
     @restaurant = Restaurant.find params[:id]
 
+    
+    begin
     if @restaurant.update restaurant_params
       flash[:success] = "Updated Restaurant!"
       redirect_to restaurants_path
     else
       render :edit
+    end
+    rescue ActiveRecord::ActiveRecordError
+      flash[:danger] = "You have entered invalid parameters. Unable to update."
+      redirect_to restaurants_path
     end
   end
 
@@ -110,11 +116,17 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new restaurant_params
     
 
+
+    begin
     if @restaurant.save
       flash[:success] = "Added Your Restaurant!"
       redirect_to restaurants_path
     else
       render :new
+    end
+    rescue ActiveRecord::ActiveRecordError
+      flash[:danger] = "Overlapping parameters! You are not allowed to do that."
+      redirect_to restaurants_path
     end
   end
 
