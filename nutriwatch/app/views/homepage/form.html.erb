@@ -10,7 +10,7 @@
 -->
 
 <form class="form-horizontal" id="why">
-
+<%= form_tag(create_path, :method=>'post', :multipart => true) do %>
 
 	<div class="container">
 		<div class="row">
@@ -18,6 +18,7 @@
 				<label for="full_dish_id requiredField" class="control-label col-sm-2">Dish Name</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control w3-text-blue" id="full_dish_id" name="full_dish" placeholder="Dish Name">
+					<input type="hidden" name="dish_p" value= />
 				</div>  
 			</div>
 		</div>
@@ -117,16 +118,19 @@
 	</div>						
 	 
 	<div class="form-group"> <!-- Submit Button -->
-		<div class="col-sm-10 col-sm-offset-2">      
+		<div class="col-sm-10 col-sm-offset-2">  
+			<form method="post" action="/dishes/query" class="button_to">
+      			<input value="New" type="submit" />
+    		</form>                   
 			<button type="submit" class="btn btn-primary" action="/dishes/query">Get Updates!</button>
 			<!-- <div class: "btn btn-small btn-primary"> -->
-			<%= button_to 'Filter my shiz',  method: :post %>
-			<!-- </div> -->
-
+			<%= button_to 'Filter my shiz', method: :put %>
+			<%= link_to 'submit', "/homepage/create", :onclick => "$('#why').submit()" %>
+			<%= submit_tag 'eff u too' %>
 		</div>
 	</div>  
 
 
-
+<% end %>
 </form>  
 

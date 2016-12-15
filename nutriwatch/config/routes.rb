@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'users#new'
   get '/form', to: 'homepage#form'
-  post '/form', to: 'homepage#create'
+  post '/form' => 'homepage#create', as: :create
 
   get 'users/signup', to: 'users#new'
   post 'users/signup',  to: 'users#create'
