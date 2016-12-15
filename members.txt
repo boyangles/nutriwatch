@@ -8,10 +8,12 @@ Team member contributions
 =========================
 Austin:
   SQL queries for searching by diet
-  Created data model in Ruby
+  Created data model in Ruby and postgres
   Bootstrap/CSS of site
   Linked user-visible CRUD operations to DB
   Error-handling
 Tina: #TODO
+  Implemented users
+  Implemented filter button for queries
 
 Tiffany: #TODO
