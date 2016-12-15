@@ -1,21 +1,75 @@
+<head>
+	<style>
+	.check {
+		opacity:0.5;
+		color:black;
+	}
+	</style>
+	
+	<script type="text/javascript">
+	$(function(){
+		$(".img-check").click(function(){
+			$(this).toggleClass("check");
+		});
+	})
+	</script>
+</head>
 
-<h1>Filters<h1>
-<!-- 
-	Filter by:
-		Restaurant Name (Wildcard name)
-		Cuisine (Checkmarks // all or many)
-		Diet (Checkmarks // none or many)
-		Calories (range)
-		Rating (range)
-		Dish (Wildcard name)
--->
+<h1 style="color:white">
+	Filters
+</h1>
 
 <form class="form-horizontal">
 
 	<div class="container">
 		<div class="row">
-			<div class="form-group"> <!-- Dish Name -->
-				<label for="full_dish_id requiredField" class="control-label col-sm-2">Dish Name</label>
+			<div class="col-sm-8 col-sm-offset-2">
+				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					</ol>
+
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" role="listbox">
+						<div class="item active">
+							<img src="assets/dishesfilter.jpg" alt="Loop1">
+							<div class="carousel-caption" style="color:white; padding-bottom:300px">
+								<div class="form-group"> <!-- Dish Name -->
+									<label for="full_dish_id requiredField" class="control-label">Dish Name</label>
+									<input type="text" class="form-control w3-text-blue" id="full_dish_id" name="full_dish" placeholder="Dish Name">
+								</div>
+							</div>
+						</div>
+
+						<div class="item">
+							<img src="assets/restaurantsfilter.jpg" alt="Loop2">
+							<div class="carousel-caption" style="color:white; padding-bottom:300px">
+								<div class="form-group"> <!-- Restaurant Name -->
+									<label for="full_restaurant_id requiredField" class="control-label">Restaurant</label>
+									<input type="text" class="form-control w3-text-blue" id="full_restaurant_id" name="full_restaurant" placeholder="Restaurant Name">
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Controls -->
+					<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+						<span class="sr-only">Previous</span>
+					</a>
+					<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+						<span class="sr-only">Next</span>
+					</a>
+				</div>
+			</div>
+		</div>
+
+<!-- 		<div class="row">
+			<div class="form-group">
+				<label for="full_dish_id requiredField" class="control-label col-sm-2" style="color:white">Dish Name</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control w3-text-blue" id="full_dish_id" name="full_dish" placeholder="Dish Name">
 				</div>  
@@ -23,17 +77,27 @@
 		</div>
 
 		<div class="row">
-			<div class="form-group"> <!-- Restaurant Name -->
-				<label for="full_restaurant_id requiredField" class="control-label col-sm-2">Restaurant</label>
+			<div class="form-group"> 
+				<label for="full_restaurant_id requiredField" class="control-label col-sm-2" style="color:white">Restaurant</label>
 				<div class="col-sm-8">
 					<input type="text" class="form-control w3-text-blue" id="full_restaurant_id" name="full_restaurant" placeholder="Restaurant Name">
 				</div>  
 			</div>
-		</div>
+		</div> -->
 
 		<div class="row">
-			<div class="form-group"><!-- Cuisine Name -->
-				<label class="control-label col-sm-2">Cuisine</label>
+			<label class="control-label col-sm-offset-2" style="color:white; font-size:20px">Cuisine</label>
+			<div class="form-group">
+
+				<% @restaurantcuisines.each do |restaurantcuisine| %>
+				<div class="col-sm-4" style="color:white"><label class="btn btn-primary"><img src="assets/<%= restaurantcuisine.cuisine %>FilterImage.jpg" alt="<%= restaurantcuisine.cuisine %>pic" class="img-thumbnail img-check"><input type="checkbox" name="<%= restaurantcuisine.cuisine %>choice" id="item4" value="<%= restaurantcuisine.cuisine %>" class="hidden" autocomplete="off"></label><p style="font-size:12px"><%= restaurantcuisine.cuisine %></p></div>
+				<% end %>
+			</div>	
+		</div>
+
+<!-- 		<div class="row">
+			<div class="form-group">
+				<label class="control-label col-sm-2" style="color:white">Cuisine</label>
 				
 				<div class="col-sm-8">
 					<% @restaurantcuisines.each do |restaurantcuisine| %>
@@ -41,7 +105,7 @@
 							<div class="checkbox">
 								<label>
 									<input type="checkbox" name="cuisine_choices" value="<%= restaurantcuisine.cuisine %>">
-									<%= restaurantcuisine.cuisine %>
+                  <div style="color:white"><%= restaurantcuisine.cuisine %></div>
 								</label>
 							</div>
 						</div>
@@ -49,22 +113,22 @@
 				</div>
 
 			</div>
-		</div>
+		</div> -->
 
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Dietary Restriction</label>
-					
+				<label class="control-label col-sm-2" style="color:white">Dietary Restriction</label>
+
 				<div class="col-sm-8">
 					<% @dietaryviolations.each do |dietaryviolation| %>
-						<div class="row">
-							<div class="checkbox">
-								<label>
-									<input type="checkbox" name="diet_choices" value="<%= dietaryviolation.diet %>">
-									<%= dietaryviolation.diet %>
-								</label>
-							</div>
+					<div class="row">
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" name="diet_choices" value="<%= dietaryviolation.diet %>">
+								<div style="color:white"><%= dietaryviolation.diet %></div>
+							</label>
 						</div>
+					</div>
 					<% end %>
 				</div>
 			</div>
@@ -72,12 +136,12 @@
 
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Calories</label>
+				<label class="control-label col-sm-2" style="color:white">Calories</label>
 
 				<div class="col-sm-8">
-					<b>0</b> <input id="calories_slider" type="text" class="span_calories" value="" data-slider-min="0" data-slider-max="5000" data-slider-step="25" data-slider-value="[0,1500]"/> <b>5000</b>
+					<b style="color:white">0</b> <input id="calories_slider" type="text" class="span_calories" value="" data-slider-min="0" data-slider-max="5000" data-slider-step="25" data-slider-value="[0,1500]"/> <b style="color:white">5000</b>
 					<script>
-						$("#calories_slider").slider({});
+					$("#calories_slider").slider({});
 					</script>
 				</div>
 			</div>
@@ -85,12 +149,12 @@
 
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Rating</label>
+				<label class="control-label col-sm-2" style="color:white">Rating</label>
 
 				<div class="col-sm-8">
-					<b>0</b> <input id="rating_slider" type="text" class="span_rating" value="" data-slider-min="0" data-slider-max="5" data-slider-step="0.5" data-slider-value="[0,5]"/> <b>5</b>
+					<b style="color:white">0</b> <input id="rating_slider" type="text" class="span_rating" value="" data-slider-min="0" data-slider-max="5" data-slider-step="0.5" data-slider-value="[0,5]"/> <b style="color:white">5</b>
 					<script>
-						$("#rating_slider").slider({});
+					$("#rating_slider").slider({});
 					</script>
 				</div>
 			</div>
@@ -98,23 +162,24 @@
 
 		<div class="row">
 			<div class="form-group">
-				<label class="control-label col-sm-2">Price Range</label>
+				<label class="control-label col-sm-2" style="color:white">Price Range</label>
 
 				<div class="col-sm-8">
-					<b>0</b> <input id="price_slider" type="text" class="span_price" value="" data-slider-min="0" data-slider-max="50" data-slider-step="0.5" data-slider-value="[0,25]"/> <b>50</b>
+					<b style="color:white">0</b> <input id="price_slider" type="text" class="span_price" value="" data-slider-min="0" data-slider-max="50" data-slider-step="0.5" data-slider-value="[0,25]"/> <b style="color:white">50</b>
 					<script>
-						$("#price_slider").slider({});
+					$("#price_slider").slider({});
 					</script>
 				</div>
 			</div>
 		</div>
 	</div>						
-	 
+
 	<div class="form-group"> <!-- Submit Button -->
 		<div class="col-sm-10 col-sm-offset-2">
 			<a href="<%= dishes_query_path %>"><button type="submit" class="btn btn-primary">Get Updates!</button></a>               
 		</div>
 	</div>        
-	 
-</form>  
+	
+</div>
 
+</form>  
