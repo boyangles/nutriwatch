@@ -27,7 +27,6 @@ development:
   host: localhost #ip of rails app
   username: rails
   password: password
-  port: 5432
 
 production:
   adapter: postgresql
@@ -36,7 +35,6 @@ production:
   username: rails
   password: password
   host: localhost #ip of rails app
-  port: 5432
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
