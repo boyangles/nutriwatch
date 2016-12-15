@@ -15,5 +15,7 @@ Austin:
 Tina: #TODO
   Implemented users
   Implemented filtering/querying
+  Implemented data models using Ruby
+  
 
 Tiffany: #TODO
