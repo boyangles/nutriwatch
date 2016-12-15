@@ -14,6 +14,6 @@ Austin:
   Error-handling
 Tina: #TODO
   Implemented users
-  Implemented filter button for queries
+  Implemented filtering/querying
 
 Tiffany: #TODO
