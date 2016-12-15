@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@homepage, url: form_path) do |f| %>
+    <%= form_for(@homepage, url: filter_path) do |f| %>
 
       <%= f.label "Dish Name"%>
       <%= f.text_field :d_name, class: 'form-control' %>
@@ -46,9 +46,9 @@
         <%= price.hidden_field :p_max, class: 'form-control' %>
     <% end %>
 
-  	<%= f.submit "Filter my shiz!", class: "btn btn-primary", method: :put %>
-  	<%= button_to 'Filter my shiz', method: :put %>
-	<%= link_to 'submit', :onclick => "$('#homepage').submit()" %>
+  	<%= f.submit "Filter my shiz!", class: "btn btn-primary" %>
+  	<%= button_to 'Filter my shiz', method: :put, d_name: 'homepage[d_name]' %>
+	<%= link_to 'submit', :onclick => "$('filter_post_path').submit()" %>
 	<%= submit_tag 'eff u too' %>
         
     <% end %>
